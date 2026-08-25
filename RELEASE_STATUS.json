@@ -1,0 +1,47 @@
+{
+  "sdk_version": "1.1.0",
+  "status": "COMPLETE_SCOPED_SDK",
+  "compatibility": {
+    "additive_public_api": true,
+    "legacy_public_headers_byte_preserved": true,
+    "frozen_arithmetic_source_byte_preserved": true,
+    "existing_source_clients_pass": true
+  },
+  "native_factorial": {
+    "runtime_exact_denotation": true,
+    "arbitrary_precision_integer": true,
+    "sequential_product_tree_independent_agreement": true,
+    "wilson_factor_count_source": "native_factorial_coordinate",
+    "published_wilson_api_delegates_to_native_coordinate": true,
+    "exact_big_integer_wilson_oracle": true,
+    "ordinary_feedback_to_arithmetic": false
+  },
+  "cyclic_structure": {
+    "exact_period_kernel_theorem_exposed": true,
+    "ramanujan_response_independently_replayed": true,
+    "valuation_reattachment_verified": true,
+    "constant_mode_factorial_verified": true,
+    "proper_period_kernel_dimension_verified": true
+  },
+  "complexity": {
+    "optimized_wilson_asymptotic_changed": false,
+    "optimized_wilson_external_coordinate": "Theta(sqrt(n))",
+    "exact_factorial_output_bits": "Theta(n log n)",
+    "cyclic_reference_time": "Theta(m^2) fixed-width operations",
+    "cyclic_reference_space": "Theta(m) coefficients",
+    "polylogarithmic_execution_claimed": false,
+    "information_boundary_reached": false
+  },
+  "non_claims": {
+    "native_collective_kernel_compiler": false,
+    "next_prime_transition": false,
+    "prime_birth_compiler": false
+  },
+  "verification": {
+    "debug_optimized_identical": true,
+    "address_sanitizer": "PASS",
+    "undefined_behavior_sanitizer": "PASS",
+    "leak_sanitizer": "SKIPPED_PTRACE_RESTRICTED_ENVIRONMENT",
+    "negative_compile_firewall": "PASS"
+  }
+}

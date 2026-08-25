@@ -1,0 +1,17 @@
+BUILD_AND_TEST_COMPLETE
+compiler=g++ (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+debug_optimized_identical=YES
+address_undefined_sanitizers=PASS
+leak_sanitizer=SKIPPED_PTRACE_RESTRICTED_ENVIRONMENT
+negative_compile_firewall=PASS
+frozen_source_hashes=PASS
+legacy_public_headers_byte_preserved=YES
+legacy_source_compatibility=PASS
+runtime_exact_factorial_derivation=PASS
+arbitrary_precision_integer=PASS
+wilson_factor_count_source=NATIVE_FACTORIAL_COORDINATE
+exact_big_integer_wilson_oracle=PASS
+public_internal_codenames=0
+arithmetic_state_rewritten=NO
+arithmetic_state_compressed=NO
+ordinary_feedback=NO

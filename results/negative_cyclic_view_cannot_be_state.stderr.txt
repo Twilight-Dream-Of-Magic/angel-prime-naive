@@ -1,0 +1,4 @@
+/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/negative_compile/cyclic_view_cannot_be_state.cpp: In function ‘int main()’:
+/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/negative_compile/cyclic_view_cannot_be_state.cpp:7:36: error: conversion from ‘const angel::prime::CyclicActionView’ to non-scalar type ‘const angel::prime::FactorialState’ requested
+    7 |     const FactorialState illegal = view;
+      |                                    ^~~~

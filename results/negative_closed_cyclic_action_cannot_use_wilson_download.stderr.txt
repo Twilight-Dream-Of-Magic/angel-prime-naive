@@ -1,0 +1,47 @@
+/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/negative_compile/closed_cyclic_action_cannot_use_wilson_download.cpp: In function ‘int main()’:
+/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/negative_compile/closed_cyclic_action_cannot_use_wilson_download.cpp:9:33: error: no match for ‘operator|’ (operand types are ‘const angel::prime::ClosedCyclicAction’ and ‘angel::prime::DownloadWilsonObservation’)
+    9 |     const auto illegal = closed | download_wilson();
+      |                          ~~~~~~ ^ ~~~~~~~~~~~~~~~~~
+      |                          |                       |
+      |                          |                       angel::prime::DownloadWilsonObservation
+      |                          const angel::prime::ClosedCyclicAction
+In file included from /workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime.hpp:5,
+                 from /workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/cyclic_structure.hpp:3,
+                 from /workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/negative_compile/closed_cyclic_action_cannot_use_wilson_download.cpp:1:
+/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime/pipeline.hpp:28:30: note: candidate: ‘angel::prime::FactorialState angel::prime::operator|(Candidate, UploadFactorialState)’
+   28 | [[nodiscard]] FactorialState operator|(
+      |                              ^~~~~~~~
+/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime/pipeline.hpp:29:15: note:   no known conversion for argument 1 from ‘const angel::prime::ClosedCyclicAction’ to ‘angel::prime::Candidate’
+   29 |     Candidate input, UploadFactorialState operation);
+      |     ~~~~~~~~~~^~~~~
+/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime/pipeline.hpp:30:28: note: candidate: ‘angel::prime::QuotientView angel::prime::operator|(const FactorialState&, BindQuotientView)’
+   30 | [[nodiscard]] QuotientView operator|(
+      |                            ^~~~~~~~
+/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime/pipeline.hpp:31:27: note:   no known conversion for argument 1 from ‘const angel::prime::ClosedCyclicAction’ to ‘const angel::prime::FactorialState&’
+   31 |     const FactorialState& state, BindQuotientView operation);
+      |     ~~~~~~~~~~~~~~~~~~~~~~^~~~~
+/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime/pipeline.hpp:32:24: note: candidate: ‘angel::prime::Download angel::prime::operator|(const QuotientView&, DownloadWilsonObservation)’
+   32 | [[nodiscard]] Download operator|(
+      |                        ^~~~~~~~
+/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime/pipeline.hpp:33:25: note:   no known conversion for argument 1 from ‘const angel::prime::ClosedCyclicAction’ to ‘const angel::prime::QuotientView&’
+   33 |     const QuotientView& view, DownloadWilsonObservation operation);
+      |     ~~~~~~~~~~~~~~~~~~~~^~~~
+In file included from /workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/cyclic_structure.hpp:5:
+/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime/cyclic_pipeline.hpp:29:32: note: candidate: ‘angel::prime::CyclicActionView angel::prime::operator|(const FactorialState&, BindCyclicAction)’
+   29 | [[nodiscard]] CyclicActionView operator|(
+      |                                ^~~~~~~~
+/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime/cyclic_pipeline.hpp:30:27: note:   no known conversion for argument 1 from ‘const angel::prime::ClosedCyclicAction’ to ‘const angel::prime::FactorialState&’
+   30 |     const FactorialState& state, BindCyclicAction operation);
+      |     ~~~~~~~~~~~~~~~~~~~~~~^~~~~
+/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime/cyclic_pipeline.hpp:32:34: note: candidate: ‘angel::prime::ClosedCyclicAction angel::prime::operator|(const CyclicActionView&, EvaluateCyclicAction)’
+   32 | [[nodiscard]] ClosedCyclicAction operator|(
+      |                                  ^~~~~~~~
+/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime/cyclic_pipeline.hpp:33:29: note:   no known conversion for argument 1 from ‘const angel::prime::ClosedCyclicAction’ to ‘const angel::prime::CyclicActionView&’
+   33 |     const CyclicActionView& view, EvaluateCyclicAction operation);
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime/cyclic_pipeline.hpp:35:39: note: candidate: ‘angel::prime::CyclicStructureDownload angel::prime::operator|(const ClosedCyclicAction&, DownloadCyclicStructure)’
+   35 | [[nodiscard]] CyclicStructureDownload operator|(
+      |                                       ^~~~~~~~
+/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime/cyclic_pipeline.hpp:36:63: note:   no known conversion for argument 2 from ‘angel::prime::DownloadWilsonObservation’ to ‘angel::prime::DownloadCyclicStructure’
+   36 |     const ClosedCyclicAction& closed, DownloadCyclicStructure operation);
+      |                                       ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~

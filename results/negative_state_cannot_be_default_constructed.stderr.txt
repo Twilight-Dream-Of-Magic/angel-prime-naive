@@ -1,0 +1,9 @@
+/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/negative_compile/state_cannot_be_default_constructed.cpp:3:34: error: use of deleted function ‘angel::boundary::State::State()’
+    3 | angel::boundary::State forbidden{};
+      |                                  ^
+In file included from /workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/boundary/evidence.hpp:3,
+                 from /workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/boundary.hpp:4,
+                 from /workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/negative_compile/state_cannot_be_default_constructed.cpp:1:
+/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/boundary/state.hpp:62:5: note: declared here
+   62 |     State() = delete;
+      |     ^~~~~

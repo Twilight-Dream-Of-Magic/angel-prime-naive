@@ -1,0 +1,13 @@
+sealed_core/include/angel/afac56/big_nat.hpp: OK
+sealed_core/include/angel/afac56/log_native.hpp: OK
+sealed_core/include/angel/afac57/principal_jet_algebra.hpp: OK
+sealed_core/include/angel/afac58/wilson_boundary.hpp: OK
+sealed_core/include/angel/afac59/adaptive_wilson.hpp: OK
+sealed_core/include/angel/afac59/polynomial_ring.hpp: OK
+sealed_core/include/angel/afac59/sublinear_wilson.hpp: OK
+sealed_core/include/angel/afac60/external_quotient_view.hpp: OK
+sealed_core/include/angel/afac61/self_cyclic_probe.hpp: OK
+sealed_core/include/angel/afac62/self_closure_germ.hpp: OK
+sealed_core/include/angel/afac63/behavioral_resume.hpp: OK
+sealed_core/include/angel/afac63/three_gate_boundary.hpp: OK
+sealed_core/include/angel/r23/future_quotient.hpp: OK

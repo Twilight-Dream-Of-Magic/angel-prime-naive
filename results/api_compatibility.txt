@@ -1,0 +1,18 @@
+include/angel/boundary.hpp: OK
+include/angel/boundary/behavior.hpp: OK
+include/angel/boundary/encoding.hpp: OK
+include/angel/boundary/evidence.hpp: OK
+include/angel/boundary/observation.hpp: OK
+include/angel/boundary/pipeline.hpp: OK
+include/angel/boundary/session.hpp: OK
+include/angel/boundary/state.hpp: OK
+include/angel/diagnostics.hpp: OK
+include/angel/prime.hpp: OK
+include/angel/prime/input.hpp: OK
+include/angel/prime/observation.hpp: OK
+include/angel/prime/pipeline.hpp: OK
+include/angel/prime/quotient.hpp: OK
+include/angel/prime/state.hpp: OK
+include/angel/state_integrity.hpp: OK
+LEGACY_PUBLIC_HEADERS_BYTE_PRESERVED=YES
+ADDITIVE_PUBLIC_API_ONLY=YES
