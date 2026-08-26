@@ -1,26 +1,26 @@
-/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/negative_compile/prime_download_cannot_become_state.cpp: In function ‘void forbidden(const angel::prime::Download&)’:
-/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/negative_compile/prime_download_cannot_become_state.cpp:4:32: error: no match for ‘operator|’ (operand types are ‘const angel::prime::Download’ and ‘angel::prime::BindQuotientView’)
+/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/negative_compile/prime_download_cannot_become_state.cpp: In function 'void forbidden(const angel::prime::Download&)':
+/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/negative_compile/prime_download_cannot_become_state.cpp:4:32: error: no match for 'operator|' (operand types are 'const angel::prime::Download' and 'angel::prime::BindQuotientView')
     4 |     static_cast<void>(ordinary | angel::prime::bind_quotient_view());
       |                       ~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       |                       |                                          |
       |                       const angel::prime::Download               angel::prime::BindQuotientView
-In file included from /workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime.hpp:5,
-                 from /workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/negative_compile/prime_download_cannot_become_state.cpp:1:
-/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime/pipeline.hpp:28:30: note: candidate: ‘angel::prime::FactorialState angel::prime::operator|(Candidate, UploadFactorialState)’
+In file included from /mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/prime.hpp:5,
+                 from /mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/negative_compile/prime_download_cannot_become_state.cpp:1:
+/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/prime/pipeline.hpp:28:30: note: candidate: 'angel::prime::FactorialState angel::prime::operator|(Candidate, UploadFactorialState)'
    28 | [[nodiscard]] FactorialState operator|(
       |                              ^~~~~~~~
-/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime/pipeline.hpp:29:15: note:   no known conversion for argument 1 from ‘const angel::prime::Download’ to ‘angel::prime::Candidate’
+/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/prime/pipeline.hpp:29:15: note:   no known conversion for argument 1 from 'const angel::prime::Download' to 'angel::prime::Candidate'
    29 |     Candidate input, UploadFactorialState operation);
       |     ~~~~~~~~~~^~~~~
-/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime/pipeline.hpp:30:28: note: candidate: ‘angel::prime::QuotientView angel::prime::operator|(const FactorialState&, BindQuotientView)’
+/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/prime/pipeline.hpp:30:28: note: candidate: 'angel::prime::QuotientView angel::prime::operator|(const FactorialState&, BindQuotientView)'
    30 | [[nodiscard]] QuotientView operator|(
       |                            ^~~~~~~~
-/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime/pipeline.hpp:31:27: note:   no known conversion for argument 1 from ‘const angel::prime::Download’ to ‘const angel::prime::FactorialState&’
+/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/prime/pipeline.hpp:31:27: note:   no known conversion for argument 1 from 'const angel::prime::Download' to 'const angel::prime::FactorialState&'
    31 |     const FactorialState& state, BindQuotientView operation);
       |     ~~~~~~~~~~~~~~~~~~~~~~^~~~~
-/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime/pipeline.hpp:32:24: note: candidate: ‘angel::prime::Download angel::prime::operator|(const QuotientView&, DownloadWilsonObservation)’
+/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/prime/pipeline.hpp:32:24: note: candidate: 'angel::prime::Download angel::prime::operator|(const QuotientView&, DownloadWilsonObservation)'
    32 | [[nodiscard]] Download operator|(
       |                        ^~~~~~~~
-/workspace/scratch/e1dec32a9531/Angel_CausalBoundary_Modular_SDK_1.1.0_2026-08-26/include/angel/prime/pipeline.hpp:33:25: note:   no known conversion for argument 1 from ‘const angel::prime::Download’ to ‘const angel::prime::QuotientView&’
+/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/prime/pipeline.hpp:33:25: note:   no known conversion for argument 1 from 'const angel::prime::Download' to 'const angel::prime::QuotientView&'
    33 |     const QuotientView& view, DownloadWilsonObservation operation);
       |     ~~~~~~~~~~~~~~~~~~~~^~~~

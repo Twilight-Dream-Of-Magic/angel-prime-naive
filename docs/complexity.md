@@ -1,137 +1,235 @@
 # Time and Space Complexity
 
-This ledger distinguishes the native state model, the ordinary external
-algorithm, and full ordinary materialization. It does not relabel a succinct
-description as a free bit-level computation.
+This ledger distinguishes native Angel execution, ordinary modular
+observation, and full ordinary materialization. A succinct program is not
+counted as completed bit-level execution.
 
 Let:
 
-- `p` be the Wilson candidate and `n = p - 1`;
+- `m` be the Wilson candidate;
+- `n = m - 1` be the factorial argument read from the certified native
+  coordinate;
 - `b = ceil(log2(n + 1))` be the input bit length;
-- `s = ceil(sqrt(n))` be the external block width;
-- `m` be a cyclic state order, `c` its cycle multiplicity, and `J` a requested
-  jet horizon;
-- `M(s)` be the cost of multiplying degree-`s` polynomials over the selected
-  modular/CRT engine.
+- `s0 = ceil(sqrt(n))` be the legacy external block width;
+- `h = floor(n/2)` and `s1 = Theta(sqrt(h))` be the reduced problem and its
+  selected near-square width;
+- `M(d)` be the cost of multiplying degree-`d` polynomials in the exact
+  composite-safe modular engine;
+- `r` be a cyclic state order, `c` its cycle multiplicity, and `J` a requested
+  jet horizon.
 
-## Factorial and Wilson pipeline
+## Native factorial stage
 
-| Stage | Time | Additional live space | What is actually produced |
+| Stage | Time | Additional live space | Result |
 |---|---:|---:|---|
-| `upload_factorial_state` | `Theta(b)` native ledger steps | `Theta(b)` | Succinct q-Pochhammer program, certified principal-jet state, and evidence |
-| `bind_quotient_view` | `O(1)` in the fixed 64-bit implementation | `O(1)` | Descriptor bound to complete state identity; no state payload |
-| `download_wilson` coordinate | `Theta(s)` materialized factor-scale objects | `Theta(s)` scalar coordinate | Block polynomial/evaluation coordinate |
-| `download_wilson` algorithm | `O(M(s) log s + s)` ring operations | current tree implementation `O(s log s)` coefficients | Exact `n! mod p`, Wilson decision, ledger, integrity witness |
+| `upload_factorial_state` | `Theta(b)` native ledger steps | `Theta(b)` | Succinct program, complete principal-jet state, certificate |
+| `bind_native_factorial` | replay linear in the succinct program | `O(1)` handle overhead | Independently verified rank/coefficient view |
 
-With schoolbook polynomial multiplication, the conservative bound becomes
-`O(s^2 log s) = O(n log n)` ring operations. With the fast transform/CRT path,
-`M(s)` can be quasi-linear, giving a soft-`O(s)` arithmetic-operation regime.
-That does not erase modulus-bit costs, CRT constants, allocations, or policy
-limits.
+The native state remains live and unchanged after binding. These costs are
+reported separately from Download-side modular work.
 
-The external coordinate has exactly
+## Previous Wilson baseline
 
-```text
-s + 1 + floor(n / s) + (n mod s)
-```
+The legacy external consumer uses
 
-scalar slots in the frozen implementation. This is `Theta(sqrt(n))`, not
-polylogarithmic. The code and result explicitly mark the former polylog claim
-as rejected.
+\[
+P_s(X)=\prod_{i=1}^{s}(X+i),
+\qquad s=s_0,
+\]
 
-### Native-coordinate repair
+and multipoint evaluation at all block origins. Its charged bounds are
 
-SDK 1.1.0 changes where the external algorithm obtains `n`: it loads the rank
-from the certified native factorial coordinate and verifies that the
-coefficient is one. The modular algorithm, coordinate, polynomial engine, and
-resource policy are otherwise unchanged. Therefore the optimized Wilson
-path keeps the same asymptotic T-S bounds shown above. The additional binding
-replay is at most linear in the succinct program description.
+\[
+T_0(n)=O(M(s_0)\log s_0+s_0),
+\qquad
+S_0(n)=O(s_0\log s_0).
+\]
 
-### Exact arbitrary-precision replay
+Its materialized external coordinate has exactly
+
+\[
+C_0(n)=s_0+1+\lfloor n/s_0\rfloor+(n\bmod s_0)
+\]
+
+scalar slots. This is \(\Theta(\sqrt n)\), not polylogarithmic.
+
+## Jointly optimized Wilson consumer
+
+The exact complement identity reduces the polynomial problem from `n! mod m`
+to `h! mod m`:
+
+\[
+n!\equiv
+\begin{cases}
+(-1)^h(h!)^2 & n\text{ even},\\
+(-1)^h(h!)^2(h+1) & n\text{ odd}
+\end{cases}
+\pmod m.
+\]
+
+The new path also:
+
+- selects a bounded near-square width that minimizes `w + floor(h/w) + h%w`;
+- reads the zero block from the block polynomial's constant coefficient;
+- generates evaluation points at leaves rather than storing a point array;
+- multiplies each block value directly into the scalar residue rather than
+  storing a value array;
+- processes two top-level evaluation ranges sequentially;
+- releases completed remainder branches before constructing their siblings;
+- initializes Horner evaluation from the leading coefficient rather than a
+  synthetic zero accumulator;
+- releases degree-one leaf products after their parent is formed and evaluates
+  the reduced parent polynomial directly at leaf points, avoiding degree-one
+  remainder calls.
+
+No product or remainder is recomputed. The new bounds are
+
+\[
+T_1(n)=O(M(s_1)\log s_1+s_1)+O(1),
+\]
+
+\[
+S_1(n)=O(s_1\log s_1).
+\]
+
+Because \(s_1=\Theta(\sqrt{n/2})\), the new implementation remains in the same
+asymptotic class as the baseline under a generic multiplication model. The
+release therefore claims a strict local Pareto improvement, not
+`T1=o(T0)` or `S1=o(S0)`.
+
+## Deterministic Pareto ledger
+
+`results/joint_wilson_operation_counts.csv` records, for a fixed increasing
+input sequence:
+
+- deterministic old/new work units;
+- `T_new/T_old`;
+- conservative old/new peak-live-coefficient bounds;
+- `S_new/S_old`;
+- old/new materialized coordinate counts;
+- polynomial multiplications;
+- schoolbook coefficient products;
+- transform butterflies;
+- exact reconstruction digits;
+- monic remainders;
+- Horner coefficient steps;
+- old/new ring additions, multiplications, reductions and coefficient updates;
+- old/new fixed-word limb products/additions;
+- old/new temporary polynomial and big-integer counts;
+- old/new allocation events and copied-byte upper bounds;
+- old/new peak live limbs;
+- state rewrite, full-factorial-materialization and feedback flags.
+
+The release probe exits with failure unless all selected rows satisfy
+
+\[
+T_{new}/T_{old}<1,
+\qquad
+S_{new}/S_{old}<1,
+\qquad
+C_{new}/C_{old}<1.
+\]
+
+The continuous test interval independently checks the same strict
+inequalities for every candidate in its frozen range.  It also requires strict
+reductions in ring additions, ring multiplications, modular reductions,
+coefficient updates, allocation count, and peak live limbs.
+
+### Meaning of the peak counters
+
+`peak_live_coefficients` is the exact peak number of coefficient slots owned by
+the outer product/remainder schedule. `peak_live_coefficients_upper_bound`
+adds a conservative, deterministic scratch allowance for the polynomial
+engine, including exact transform and reconstruction storage. Both paths are
+compared using the scratch-inclusive bound.
+
+Each modular coefficient is one 64-bit word in the current public candidate
+chart, so the scratch-inclusive coefficient bound is also reported as peak
+live word limbs. No arbitrary-precision integer is created by the joint
+Wilson path.
+
+## Ring and bit complexity
+
+The polynomial engine has two exact backends:
+
+- schoolbook convolution for bounded coefficient products;
+- multi-prime transform convolution followed by exact mixed-radix
+  reconstruction for larger products.
+
+The second backend does not reduce modulo the possibly composite target until
+integer convolution coefficients have been reconstructed exactly. Monic
+remainder evaluation therefore remains valid without field inverses.
+
+The ledger distinguishes high-level deterministic events from fixed-word
+arithmetic. It never promotes the native-operation count to a general bit
+complexity theorem. Modulus-word multiplication uses a double-width exact
+intermediate in the public 64-bit candidate chart.
+
+## Exact arbitrary-precision replay
 
 Let
 
-```text
-B = bit_length(n!) = Theta(n log n)
-```
+\[
+B=\operatorname{bit\_length}(n!)=\Theta(n\log n)
+\]
 
-and let `w=32` be the limb width of the included owned big integer.
+and let the included owned integer use 32-bit limbs.
 
 | Exact stage | Time | Live/result space |
 |---|---:|---:|
-| sequential derivation | `Theta(sum(k log k)/w) = Theta(n^2 log n / w)` limb updates | `Theta(B/w)` limbs |
-| independent product tree with schoolbook multiplication | `O((B/w)^2)` limb-product accumulations | `O(B/w)` live limbs |
-| decimal download by repeated division | `O((B/w) * decimal_digits(n!))` limb divisions | `Theta(B)` output bits |
-| exact Wilson remainder after derivation | `Theta(B/w)` limb scans | `O(1)` additional words |
+| sequential derivation | `Theta(n^2 log n / 32)` limb updates in the current implementation | `Theta(B/32)` limbs |
+| independent product tree with schoolbook multiplication | `O((B/32)^2)` limb-product accumulations | `O(B/32)` live limbs |
+| decimal Download | repeated exact small division | `Theta(B)` output bits |
+| exact Wilson remainder after materialization | `Theta(B/32)` limb scans | `O(1)` additional words |
 
-The strict path runs both factorial derivations and compares the full values.
-Its current upper bound is dominated by the schoolbook product-tree audit and
-decimal conversion, not by the succinct native state. This extra work is
-separately charged in `ExactFactorialLedger` and is not included in the
-optimized Wilson headline.
-
-Any implementation that downloads every bit or decimal digit of `n!` has an
-unconditional `Omega(B)` output-time and output-space cost. The SDK therefore
-keeps exact materialization as an explicit bounded policy path.
+The strict exact path runs two independent factorial derivations and compares
+them before certification. This path is not part of the optimized modular
+headline. Any complete binary or decimal Download of `n!` has unconditional
+`Omega(B)` output time and space.
 
 ## Cyclic boundary pipeline
 
-For fixed-width 64-bit values, normalization, upload, presentation transport,
-native quotient, same-frame continuation, order closure, native checkpoint,
-and order download each use `O(1)` word operations and `O(1)` state-sized
-space. In a variable-width bit model, copying and validating an order costs at
-least `Omega(b)` bits.
+For fixed-width values, normalization, upload, presentation transport, native
+quotient, same-frame continuation, order closure, checkpoint, and order
+Download each use constant state-sized work. In a variable-width model,
+copying and validating an order requires at least its input bit length.
 
-The primitive closure operation is a dense reference audit, not a native
-constant-time primitive. Its implementation applies `c*m` factors and updates
-two `(J+1) x m` tensors. Its bound is:
+The primitive closure evaluator is a dense reference audit. It applies `c*r`
+factors and updates two `(J+1) x r` tensors:
 
 ```text
-time  = O(c * m^2 * J^2) modular updates
-space = O(m * J) modular coefficients
+time  = O(c * r^2 * J^2) modular updates
+space = O(r * J) modular coefficients
 ```
 
-At the exact ramification horizon `J = c`, this is
-`O(c^3 * m^2)` time and `O(c*m)` coefficient space. The runtime ledger records
-the actual dense coefficient and update counts.
+At `J=c`, this is `O(c^3 r^2)` time and `O(cr)` coefficient space.
 
 ## Factorial-derived cyclic structure
 
-For order `m`, the primitive-period reference evaluator performs exactly
-`m(m-1)` modular coefficient updates and keeps two `m`-coefficient vectors.
-The independently derived Ramanujan audit costs
-`O(sqrt(m) + m*omega(m))` fixed-width number-theory work.
-
-Optional normalized-action materialization, valuation reattachment, and the
-reference kernel calculation each use `O(m^2)` fixed-width operations and
-`O(m)` coefficient space. The valuation replay records exactly
-`2m(m-1)` modular updates.
-
-Thus a fully materialized cyclic response is `Theta(m^2)` word work and
-`Theta(m)` response/live coefficient space. With input length
-`L=ceil(log2(m+1))`, those are exponential in `L`; the seven-word descriptor
-does not change that execution fact.
+For order `r`, the primitive-period reference evaluator performs exactly
+`r(r-1)` modular coefficient updates and keeps two `r`-coefficient vectors.
+Optional normalized action, valuation reattachment and reference kernel
+calculation remain quadratic fixed-word audits. A compact descriptor does not
+change those execution costs.
 
 ## Public wrapper overhead
 
-Each newly produced opaque handle performs one model allocation. Copying a
-handle copies a `shared_ptr` in `O(1)` time/space; it does not copy, merge, or
-compress the frozen state. Exceptions are used for invalid pipeline stages.
+Each opaque handle uses one shared model allocation. Copying a handle copies a
+`shared_ptr`; it does not copy, merge or compress the native state. Exceptions
+are used for invalid stage transitions and resource-policy violations.
 
-## Information-theoretic boundary
+## Current boundary
 
-This implementation has not reached an `O(log p)` external Wilson algorithm.
-Its ordinary external coordinate is `Theta(sqrt(p))`, so it is above the input
-and one-bit-decision information boundary.
+The release has not eliminated the square-root external coordinate and does
+not claim a polylogarithmic Wilson consumer. It has established an executable
+joint local Pareto improvement while preserving:
 
-The native factorial state is not an ordinary binary expansion of `n!`.
-The new exact path can download all digits, but honestly pays the
-`Theta(n log n)`-bit output requirement and the additional arbitrary-precision
-audit work. The optimized Wilson path avoids that download and keeps its prior
-T-S main order.
+```text
+native state nodes rewritten = 0
+ordinary feedback            = 0
+full n! materialized         = 0
+```
 
-`results/complexity_probe.txt`, generated by `build_and_test.sh`, reports the
-actual object sizes, native ledger steps, payload bytes, external scalar slots,
-dense reference updates, and one non-normative wall-clock sample for the local
-compiler and machine.
+`results/complexity_probe.txt` contains object sizes, native steps, state
+payload, legacy external coordinate size, new deterministic work and peak
+space, exact factorial ledgers, and non-normative local wall-clock samples.

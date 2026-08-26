@@ -1,4 +1,5 @@
 #include "angel/cyclic_structure.hpp"
+#include "angel/release.hpp"
 #include "angel/version.hpp"
 
 #include <cstdint>
@@ -175,7 +176,11 @@ void verify_invalid_evaluation_domain_is_rejected() {
 int main() {
     require(angel::sdk_version_major == 1 && angel::sdk_version_minor == 1 &&
                 angel::sdk_version_patch == 0,
-            "semantic SDK version mismatch");
+            "compatibility-line SDK version mismatch");
+    require(angel::additive_release_major == 1 &&
+                angel::additive_release_minor == 2 &&
+                angel::additive_release_patch == 0,
+            "additive release version mismatch");
     verify_exhaustive_period_structure();
     verify_normalized_kernel_and_constant_mode();
     verify_resource_limit_closes_before_dense_domain_checks();

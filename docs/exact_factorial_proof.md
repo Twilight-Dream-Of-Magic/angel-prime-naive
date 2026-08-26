@@ -15,7 +15,7 @@ The factorial-place denotation of a canonical digit is
 D(r,c) = c * r!.
 ```
 
-Thus the accepted coordinate denotes `r!`. SDK 1.1.0 does not stop at this
+Thus the accepted coordinate denotes `r!`. SDK 1.2.0 does not stop at this
 declarative equality; it evaluates the denotation into an arbitrary-precision
 carrier.
 

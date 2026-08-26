@@ -29,11 +29,13 @@ The Wilson download returns `StateIntegrity`, which checks:
 - state compression is false;
 - ordinary feedback is false.
 
-SDK 1.1.0 additionally binds the Wilson factor count to the frozen
+SDK 1.2.0 retains the binding of the Wilson factor count to the frozen
 `AngelFactorialResult` rank and coefficient. The binding verifies the native
 result certificate, the principal target/valuation diagonal, and the result
 seal before modular work begins. `NativeWilsonEvidence` exposes those facts in
 the additive API.
+
+The joint Wilson path additionally records an exact before/after state identity, zero rewritten nodes, zero merged nodes, no full-factorial materialization, and no ordinary feedback. Its complement-paired and streamed schedule exists entirely on the Download side.
 
 The exact factorial path derives an owned arbitrary-precision denotation twice
 and requires bit-for-bit equality. Its `StateIntegrity` still refers to the

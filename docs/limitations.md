@@ -1,29 +1,36 @@
-# Limitations and Non-Claims
+# Limitations and Open Problems
 
-- The cyclic boundary pipeline is a scoped protocol over the cyclic chart. It
-  is not claimed to be the complete high-dimensional Angel state.
-- The Factorial/Wilson pipeline retains the complete frozen principal-jet
-  state, but its ordinary observation uses a square-root external coordinate.
-- The dense primitive-closure path is a reference audit with polynomial
-  resource use. It is not a new native instruction.
-- No full ordinary expansion of `n!` is provided.
-- No `O(log n)` external Wilson algorithm or information-boundary optimality is
-  claimed.
-- The optimized Wilson path now consumes the native factorial coordinate, but
-  evaluating that coordinate modulo the candidate still has the existing
-  square-root-coordinate cost. Correct binding is not execution compression.
-- Exact `n!` materialization uses a real owned arbitrary-precision integer and
-  an independent product-tree audit. It has polynomial work and
-  `Theta(n log n)` result/output bits; it is not counted as logarithmic native
-  execution.
-- The cyclic-structure observer remains an exact external `O(m^2)` reference
-  evaluator with `O(m)` response space.
-- Structural primality and Wilson observation for a supplied candidate are not
-  a next-prime transition or a native Prime-Birth compiler.
-- The public handles are source-stable abstractions, not a promised binary ABI
-  across arbitrary C++ standard-library implementations.
-- Copying `SessionAuthority` intentionally shares one issuance sequence. It
-  does not fork authority state and accidentally reuse session identifiers.
-- LeakSanitizer may not run in ptrace-restricted containers. AddressSanitizer
-  and UndefinedBehaviorSanitizer still run with leak detection disabled, and
-  the result log states that limitation explicitly.
+- The joint Wilson implementation is a **local Pareto improvement**, not a
+  proof of a lower asymptotic class. Both the legacy and new external paths
+  remain in a square-root-coordinate family.
+- The complement-pairing theorem reduces the polynomial problem from `n` to
+  `floor(n/2)` and the schedule removes several stored arrays and live
+  branches, but it does not eliminate the degree-`Theta(sqrt(n))` block
+  polynomial.
+- No `O(log n)` or general polylogarithmic external Wilson consumer is claimed.
+- The current sufficient summary is not proved closed under every native
+  doubling, shift, quotient projection and constant-mode observation. Finding
+  such a summary remains the main coordinate-compression problem.
+- Deterministic operation counts and peak-live-coefficient bounds are not
+  substitutes for a universal bit-complexity theorem. They describe the exact
+  implemented chart and its fixed-word polynomial lowering.
+- The reported scratch-inclusive peak is a conservative deterministic upper
+  bound. It is intentionally not reduced to a wall-clock or resident-set-size
+  anecdote.
+- The complete integer `n!` is not materialized by the joint modular path. The
+  separate exact path does materialize it and therefore pays the unavoidable
+  `Theta(n log n)` output size plus its current arbitrary-precision audit work.
+- The cyclic boundary pipeline is a scoped typed protocol. Its dense closure
+  and period evaluators remain reference audits with polynomial resource use;
+  they are not new constant-time native instructions.
+- Wilson observation for a supplied integer is a naive prime application. It
+  is not a candidate-free next-prime transition or a complete native
+  Prime-Birth compiler.
+- The public candidate chart remains 64-bit. The SDK retains its independent
+  arbitrary-precision exact factorial path, but this release does not widen the
+  public Wilson modulus type.
+- The public handles are source-stable abstractions, not a guaranteed binary
+  ABI across unrelated standard-library implementations.
+- LeakSanitizer may be unavailable in ptrace-restricted environments. Address
+  and undefined-behaviour checks still run with leak detection disabled, and
+  the release log records that scope explicitly.

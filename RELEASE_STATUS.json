@@ -1,39 +1,64 @@
 {
-  "sdk_version": "1.1.0",
-  "status": "COMPLETE_SCOPED_SDK",
+  "sdk_version": "1.2.0",
+  "compatibility_line_header_version": "1.1.0",
+  "status": "COMPLETE_SCOPED_SDK_WITH_JOINT_LOCAL_PARETO_OPTIMIZATION",
   "compatibility": {
     "additive_public_api": true,
     "legacy_public_headers_byte_preserved": true,
+    "supplied_sdk_1_1_public_headers_byte_preserved": true,
     "frozen_arithmetic_source_byte_preserved": true,
     "existing_source_clients_pass": true
   },
   "native_factorial": {
     "runtime_exact_denotation": true,
-    "arbitrary_precision_integer": true,
-    "sequential_product_tree_independent_agreement": true,
+    "arbitrary_precision_exact_integer_path": true,
     "wilson_factor_count_source": "native_factorial_coordinate",
-    "published_wilson_api_delegates_to_native_coordinate": true,
-    "exact_big_integer_wilson_oracle": true,
+    "candidate_role": "modulus_and_independent_consistency_check",
     "ordinary_feedback_to_arithmetic": false
   },
-  "cyclic_structure": {
-    "exact_period_kernel_theorem_exposed": true,
-    "ramanujan_response_independently_replayed": true,
-    "valuation_reattachment_verified": true,
-    "constant_mode_factorial_verified": true,
-    "proper_period_kernel_dimension_verified": true
+  "joint_wilson": {
+    "complement_pairing_identity": true,
+    "composite_safe": true,
+    "streamed_scalar_projection": true,
+    "leading_coefficient_horner": true,
+    "degree_one_leaf_remainder_elimination": true,
+    "materialized_evaluation_point_array": false,
+    "materialized_block_value_array": false,
+    "full_factorial_materialized": false,
+    "native_state_nodes_rewritten": 0,
+    "time_work_strictly_reduced_on_frozen_domain": true,
+    "ring_additions_strictly_reduced_on_frozen_domain": true,
+    "ring_multiplications_strictly_reduced_on_frozen_domain": true,
+    "modular_reductions_strictly_reduced_on_frozen_domain": true,
+    "coefficient_updates_strictly_reduced_on_frozen_domain": true,
+    "allocation_count_strictly_reduced_on_frozen_domain": true,
+    "peak_space_strictly_reduced_on_frozen_domain": true,
+    "peak_limbs_strictly_reduced_on_frozen_domain": true,
+    "materialized_coordinate_strictly_reduced_on_frozen_domain": true,
+    "time_asymptotically_improved": false,
+    "space_asymptotically_improved": false,
+    "both_improved_in_same_implementation": true,
+    "sqrt_coordinate_eliminated": false
   },
   "complexity": {
-    "optimized_wilson_asymptotic_changed": false,
-    "optimized_wilson_external_coordinate": "Theta(sqrt(n))",
+    "old_time": "O(M(sqrt(n)) log n + sqrt(n))",
+    "new_time": "O(M(sqrt(n/2)) log n + sqrt(n/2)) + O(1)",
+    "old_space": "O(sqrt(n) log n) coefficients",
+    "new_space": "O(sqrt(n/2) log n) coefficients",
+    "classification": "strict_local_pareto_improvement_same_asymptotic_class",
     "exact_factorial_output_bits": "Theta(n log n)",
-    "cyclic_reference_time": "Theta(m^2) fixed-width operations",
-    "cyclic_reference_space": "Theta(m) coefficients",
-    "polylogarithmic_execution_claimed": false,
-    "information_boundary_reached": false
+    "polylogarithmic_execution_claimed": false
+  },
+  "range_scope": {
+    "public_wilson_modulus_chart": "uint64_t with typed resource rejection and no silent truncation",
+    "arbitrary_precision_exact_factorial_path": true,
+    "arbitrary_precision_wilson_modulus_added": false
   },
   "non_claims": {
-    "native_collective_kernel_compiler": false,
+    "sqrt_coordinate_eliminated": false,
+    "polylogarithmic_wilson_consumer": false,
+    "joint_asymptotic_improvement": false,
+    "arbitrary_precision_wilson_modulus": false,
     "next_prime_transition": false,
     "prime_birth_compiler": false
   },
@@ -42,6 +67,23 @@
     "address_sanitizer": "PASS",
     "undefined_behavior_sanitizer": "PASS",
     "leak_sanitizer": "SKIPPED_PTRACE_RESTRICTED_ENVIRONMENT",
-    "negative_compile_firewall": "PASS"
+    "negative_compile_firewall": "PASS",
+    "frozen_source_hashes": "PASS",
+    "legacy_public_header_hashes": "PASS",
+    "supplied_sdk_public_header_hashes": "PASS",
+    "continuous_public_candidates": 1023,
+    "continuous_pareto_audits": 2047,
+    "exact_factorial_fixtures": [
+      0,
+      1,
+      20,
+      100,
+      1000
+    ],
+    "cmake_debug_ctest": "PASS",
+    "cmake_release_ctest": "PASS",
+    "cmake_sanitizer_ctest": "PASS",
+    "cmake_sanitizer_examples_and_probes_link": "PASS",
+    "negative_compile_cases": 11
   }
 }

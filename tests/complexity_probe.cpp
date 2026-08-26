@@ -1,6 +1,7 @@
 #include "angel/boundary.hpp"
 #include "angel/cyclic_structure.hpp"
 #include "angel/diagnostics.hpp"
+#include "angel/joint_wilson.hpp"
 #include "angel/native_factorial.hpp"
 #include "angel/prime.hpp"
 
@@ -50,6 +51,23 @@ int main() {
               << (native_wilson.evidence.native_coordinate_verified
                       ? "yes" : "no")
               << '\n';
+
+    JointWilsonPolicy joint_policy{};
+    joint_policy.parallel_ntt_primes = false;
+    const auto joint_wilson =
+        native_factorial | project_wilson_jointly(joint_policy);
+    std::cout << "joint_wilson_work_units="
+              << joint_wilson.ledger.deterministic_work_units << '\n';
+    std::cout << "joint_wilson_peak_live_coefficients_upper_bound="
+              << joint_wilson.ledger.peak_live_coefficients_upper_bound
+              << '\n';
+    std::cout << "joint_wilson_materialized_coordinate_count="
+              << joint_wilson.coordinate.materialized_coordinate_count
+              << '\n';
+    std::cout << "joint_wilson_state_nodes_rewritten="
+              << joint_wilson.ledger.native_state_nodes_rewritten << '\n';
+    std::cout << "joint_wilson_verified="
+              << (joint_wilson.verified() ? "yes" : "no") << '\n';
 
     const auto exact_started = std::chrono::steady_clock::now();
     const auto exact_1000 = candidate(1001U)

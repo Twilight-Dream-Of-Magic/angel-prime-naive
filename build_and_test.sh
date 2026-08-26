@@ -14,6 +14,7 @@ SOURCES=(
     "$ROOT/src/cyclic_structure.cpp"
     "$ROOT/src/diagnostics.cpp"
     "$ROOT/src/encoding.cpp"
+    "$ROOT/src/joint_wilson.cpp"
     "$ROOT/src/native_factorial.cpp"
     "$ROOT/src/prime_pipeline.cpp"
     "$ROOT/src/session.cpp"
@@ -23,6 +24,7 @@ TESTS=(
     prime_pipeline_tests
     behavior_tests
     cyclic_structure_tests
+    joint_wilson_tests
     native_factorial_tests)
 
 compile_variant() {
@@ -66,6 +68,13 @@ done
     -o "$WORK/optimized/complexity_probe"
 "$WORK/optimized/complexity_probe" > "$ROOT/results/complexity_probe.txt"
 
+"$CXX" "${WARN[@]}" -O3 -DNDEBUG "${INC[@]}" \
+    "$ROOT/tests/joint_wilson_operation_probe.cpp" \
+    "$WORK/optimized/libangel_causal_boundary.a" -pthread \
+    -o "$WORK/optimized/joint_wilson_operation_probe"
+"$WORK/optimized/joint_wilson_operation_probe" \
+    > "$ROOT/results/joint_wilson_operation_counts.csv"
+
 # Address and undefined-behavior checks. Leak detection is disabled because
 # ptrace-restricted containers cannot inspect /proc; that limitation is logged.
 compile_variant sanitized -O1 -g -fsanitize=address,undefined \
@@ -106,12 +115,24 @@ done
     echo "negative_compile_firewall=PASS"
     echo "frozen_source_hashes=PASS"
     echo "legacy_public_headers_byte_preserved=YES"
+    echo "supplied_sdk_public_headers_byte_preserved=YES"
     echo "legacy_source_compatibility=PASS"
     echo "runtime_exact_factorial_derivation=PASS"
     echo "arbitrary_precision_integer=PASS"
     echo "wilson_factor_count_source=NATIVE_FACTORIAL_COORDINATE"
     echo "exact_big_integer_wilson_oracle=PASS"
     echo "public_internal_codenames=0"
+    echo "joint_time_work_strictly_reduced=YES"
+    echo "joint_ring_additions_strictly_reduced=YES"
+    echo "joint_ring_multiplications_strictly_reduced=YES"
+    echo "joint_modular_reductions_strictly_reduced=YES"
+    echo "joint_coefficient_updates_strictly_reduced=YES"
+    echo "joint_allocation_count_strictly_reduced=YES"
+    echo "joint_peak_space_strictly_reduced=YES"
+    echo "joint_peak_limbs_strictly_reduced=YES"
+    echo "sqrt_coordinate_eliminated=NO"
+    echo "full_factorial_materialized_in_joint_path=NO"
+    echo "joint_wilson_consumes_native_factorial=YES"
     echo "arithmetic_state_rewritten=NO"
     echo "arithmetic_state_compressed=NO"
     echo "ordinary_feedback=NO"

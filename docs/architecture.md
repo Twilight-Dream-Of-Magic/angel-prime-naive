@@ -2,108 +2,142 @@
 
 ## Design result
 
-The previous public surface exposed a static protocol class plus dozens of
-cooperating certificate, boundary, verifier, observer, and view classes. The
-new public surface separates values from behavior:
+The SDK separates mathematical values, stage operations, ordinary observers,
+and verification evidence.
 
-- Plain structs carry data, evidence, policies, and ledgers.
-- Ten opaque value handles own complete implementation objects:
-  `FactorialState`, `QuotientView`, `SessionAuthority`, `State`,
-  `NativeCheckpoint`, `ClosedObservation`, `CyclicActionView`,
-  `ClosedCyclicAction`, `NativeFactorialView`, and `ExactFactorialValue`.
-- Free functions create operations.
-- `operator|` applies an operation to the only legal preceding state type.
-- Algorithms live in source modules rather than a god class.
+- Plain structs carry policies, ledgers, observations and proof summaries.
+- Opaque handles own complete implementation objects.
+- Free functions create stage operations.
+- `operator|` applies an operation only to its legal predecessor type.
+- Algorithms live in source modules, not in a generic state wrapper.
 
-The command structs are zero- or few-field values. They are not service
-objects, do not own state, and do not create another object graph.
+The command structs are small operation descriptions. They do not own native
+state and do not create a second authority path.
 
-## Module boundaries
+## Canonical causal boundary
 
 ```text
-ordinary cyclic encoding
-    | upload
-opaque cyclic state
-    | quotient / continue / presentation change / native checkpoint
-opaque cyclic state
-    | close an observer
-closed observation
-    | download
-ordinary observation + irreversible cut receipt
+known ordinary input/specification
+        |
+        | Proxy Upload: the only public ascent
+        v
+complete native state
+        |
+        | actual native state-to-state transitions
+        v
+live native factorial state
+        |
+        | explicit Download boundary
+        v
+ordinary observation
 ```
+
+There is no ordinary-observation-to-native feedback edge.
+
+## Native factorial and Wilson paths
 
 ```text
 ordinary candidate
     | upload factorial state
 complete native factorial request and state
-    | bind quotient view
-external descriptor bound to exact state identity
-    | download Wilson observation
-ordinary residue/decision + before/after state-integrity evidence
-```
-
-```text
-complete native factorial request and state
     | bind native factorial
-immutable view of the certified native result coordinate
-    | optimized modular projection
-Wilson observation sourced from the native rank
+immutable verified view of rank=n, coefficient=1
+    | project Wilson jointly
+ordinary residue/decision + detailed T-S ledger + state-integrity evidence
 ```
 
+The jointly optimized consumer:
+
+1. reads the factor count from the certified native rank;
+2. checks `candidate = rank + 1` independently;
+3. applies the integral complement-pairing theorem;
+4. computes the reduced modular factorial through the composite-safe
+   polynomial engine;
+5. streams ordinary block observations into one scalar residue;
+6. returns an irreversible ordinary result.
+
+The candidate is not reused as a substitute factor count. The complete integer
+`n!` is not materialized.
+
+The legacy Wilson path remains source-compatible:
+
 ```text
-immutable native factorial view
+complete native factorial state
+    | bind external quotient view
+state-bound external descriptor
+    | download Wilson observation
+ordinary residue/decision
+```
+
+## Exact arbitrary-precision path
+
+```text
+verified native factorial view
     | derive exact factorial
 opaque arbitrary-precision exact value, independently replayed
-    | exact Wilson remainder OR ordinary integer download
-ordinary non-resumable observation
+    | exact Wilson remainder OR ordinary integer Download
+ordinary non-resumable result
 ```
+
+The arbitrary-precision value is an external denotation. It is deliberately
+not typed as a native state and cannot re-enter native execution.
+
+## Cyclic structure path
 
 ```text
-complete native factorial request and state
+complete native factorial state
     | bind cyclic action
 immutable external cyclic descriptor
-    | evaluate and close
-closed private response
-    | independently verify and download
-ordinary period structure + proof ledger
+    | evaluate and close reference action
+closed response
+    | independent verification and Download
+ordinary period structure + ledger
 ```
 
-The boundary state and factorial-derived pipelines intentionally remain
-distinct. The cyclic boundary state in
-the R63 experiment is scoped and is not silently identified with the complete
-R57 principal-jet state used by the R60 Wilson application.
-
-The arbitrary-precision value is an external operational denotation of the
-native factoradic result. It is deliberately not typed as an Angel state.
+The cyclic reference evaluator and the native factorial state are related by
+proved projections, but they remain different typed pipelines.
 
 ## Why operator overloading is safe here
 
-Only `operator|` is overloaded, and only for explicit stage pairs. There is no
-generic catch-all operator and no arithmetic operator overload on Angel state.
-Consequently:
+Only explicit stage-pair overloads exist. There is no generic catch-all
+operator and no ordinary arithmetic overload on native state. Therefore:
 
-- a `DownloadPacket` cannot be piped into `quotient_to`;
-- a prime `Download` cannot be treated as a `FactorialState`;
-- an unclosed `State` cannot be passed to `download`;
-- a native checkpoint remains a distinct type from an ordinary observation.
-- a cyclic action view cannot become a factorial state;
-- an exact factorial value cannot bind a native quotient view;
-- an exact factorial download cannot become a factorial state.
+- an ordinary Download cannot continue native execution;
+- a Wilson observation cannot become a factorial state;
+- a factorial state cannot skip the verified native-coordinate binding before
+  the joint consumer;
+- an ordinary candidate cannot call the joint consumer directly;
+- an exact factorial Download cannot become native state;
+- a cyclic observation cannot become native state.
 
-Those properties are exercised in `negative_compile/`.
+These properties are compiled as negative tests.
 
-## Dependency direction
+## Frozen-source boundary
 
-Public headers know only semantic public types and forward-declared PIMPL
-models. Ordinary source modules know only semantic aliases. One private header,
-`src/internal/frozen_types.hpp`, maps those aliases to the byte-preserved
-historical namespaces. This makes the historical naming dependency explicit,
-small, and non-transitive.
+The arithmetic/state implementation under `sealed_core/` is immutable. New
+functionality is an additive source module that reads a certified view and
+runs after the explicit observation boundary. Release verification checks all
+frozen source hashes before accepting the package.
 
-## Historical lineage
+Legacy public headers are also byte-preserved. The new semantic header is
+`include/angel/joint_wilson.hpp`; existing source clients need no changes.
 
-The immutable implementation is drawn from the complete R63 package and
-therefore includes the R56–R62 and R23 headers on which it depends. The R60
-external quotient view, R61 cyclic probe, and R62 germ implementation are the
-same source revisions embedded in that package. Their exact hashes are listed
-in `manifest/frozen_source.sha256`.
+## State-integrity rule
+
+The joint consumer records the complete state identity before and after the
+observation. Acceptance requires:
+
+```text
+request binding unchanged
+state seal unchanged
+source-program seal unchanged
+certificate seal unchanged
+payload bytes unchanged
+native nodes rewritten = 0
+native nodes merged = 0
+ordinary feedback = false
+```
+
+The optimization therefore changes only Download-side evaluation work and
+space. It does not compress, reinterpret or mutate the native arithmetic
+object.

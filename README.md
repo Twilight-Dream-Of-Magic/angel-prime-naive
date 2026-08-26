@@ -1,31 +1,78 @@
-# Angel Causal Boundary Modular SDK 1.1.0
+# Angel Causal Boundary Modular SDK 1.2.0
 
-This additive release fixes the factorial-consumption gap without changing the
-published public types or the sealed arithmetic/state implementation.
+This additive release introduces a jointly optimized Wilson consumer while
+leaving the frozen Angel arithmetic/state implementation and all legacy public
+headers byte-for-byte unchanged.
 
-The runtime now exposes two explicit paths from the same native factorial
-coordinate:
+The published `angel/version.hpp` is intentionally preserved as part of the
+SDK 1.1.0 compatibility surface.  New code may include `angel/release.hpp` to
+read the additive package identity `1.2.0`.
+
+The release preserves the canonical causal boundary:
 
 ```text
-FactorialState
-  -> NativeFactorialView
-     -> optimized modular Wilson projection
-     -> exact arbitrary-precision factorial derivation
-        -> exact big-integer Wilson remainder
+known ordinary specification
+        -> Proxy Upload
+        -> complete native factorial state
+        -> actual native state-to-state arithmetic
+        -> certified native factorial coordinate
+        -> explicit Download boundary
+        -> ordinary modular observation
 ```
 
-The optimized Wilson path loads its factor count from
-`AngelFactorialResult.value().rank()`. It no longer assigns the factor count
-from `candidate - 1` inside the observer. The candidate is retained as the
-modulus and as an independently checked diagonal binding.
+The new consumer does not reconstruct the factor count from `candidate - 1`.
+It reads
 
-The exact path materializes the denotation of that native factoradic
-coordinate with an owned arbitrary-precision integer. A sequential derivation
-and an independent product-tree derivation must agree bit-for-bit before the
-value is certified. Wilson can then consume that exact big integer directly.
+```text
+rank = n
+coefficient = 1
+denotation = n!
+```
 
-Neither external path rewrites, merges, compresses, or feeds an ordinary result
-back into the arithmetic state.
+from the independently verified native factorial coordinate, and uses the
+candidate only as the modulus and as the separately checked equality
+`candidate = n + 1`.
+
+## Joint time-space optimization
+
+Let `m` be the Wilson modulus, `n = m - 1`, and `h = floor(n/2)`.  Pairing the
+factors `k` and `m-k` gives the exact integral identities
+
+```text
+n even: n! = (-1)^h (h!)^2              modulo m
+n odd : n! = (-1)^h (h!)^2 (h+1)        modulo m
+```
+
+They hold for every modulus, including composite moduli.  No inverse, field
+assumption, rational relaxation, factorization, or prime-specific branch is
+used.
+
+The implementation therefore evaluates only `h! mod m`, selects a bounded
+near-square block schedule for `h`, omits the zero evaluation point from the
+multipoint tree, streams block values directly into the scalar residue, and
+releases completed remainder branches immediately.  It also starts Horner
+evaluation from the leading coefficient and eliminates degree-one leaf
+remainders after their parent products have been formed.  The complete `n!`
+is never materialized.
+
+This is a real local Pareto improvement, not an asymptotic-order claim:
+
+```text
+old time:  O(M(sqrt(n)) log n + sqrt(n)) ring operations
+new time:  O(M(sqrt(n/2)) log n + sqrt(n/2)) + O(1)
+old space: O(sqrt(n) log n) live coefficients
+new space: O(sqrt(n/2) log n) live coefficients
+```
+
+Under standard multiplication models the old and new paths remain in the same
+asymptotic class.  The release therefore reports `asymptotic improvement = NO`
+and proves a deterministic engineering improvement instead.  On the frozen
+operation-count sequence, both the deterministic work count and the
+conservative peak-live-coefficient bound are strictly lower for every tested
+input.  The instrumented old/new replay also shows strict reductions in ring
+additions, ring multiplications, modular reductions, coefficient updates,
+allocation count, and peak live limbs throughout the continuous release
+interval.  The square-root coordinate is reduced but not eliminated.
 
 ## Build and verify
 
@@ -33,30 +80,24 @@ back into the arithmetic state.
 ./build_and_test.sh
 ```
 
-The script runs Debug/O3 equivalence, AddressSanitizer,
-UndefinedBehaviorSanitizer, negative compile tests, frozen-source verification,
-legacy-header compatibility, exact factorial fixtures, native-coordinate
-Wilson consumption, cyclic-structure theorems, and the public-name audit.
+The script runs:
 
-## Existing boundary pipeline
+- Debug and optimized-output equivalence;
+- address and undefined-behaviour checks;
+- old public pipeline tests;
+- native factorial and exact arbitrary-precision tests;
+- the jointly optimized Wilson tests;
+- a continuous Pareto audit;
+- strict old/new ring-addition, ring-multiplication, modular-reduction,
+  coefficient-update and peak-limb comparisons;
+- negative compilation boundaries;
+- frozen-source, legacy-header and supplied-SDK-header hash verification;
+- deterministic old/new operation-count generation;
+- the public-name audit.
 
-```cpp
-#include "angel/boundary.hpp"
+## Existing Wilson API
 
-using namespace angel::boundary;
-
-SessionAuthority authority{0xCA550001U};
-BoundaryLedger ledger{};
-
-auto packet = EncodedOrder::canonical(24)
-            | upload(authority, &ledger)
-            | quotient_to(6, &ledger)
-            | continue_to(4, &ledger)
-            | observe_primitive(4, 998244353U, 1, &ledger)
-            | download(&ledger);
-```
-
-## Published Wilson pipeline, repaired internally
+The published API remains unchanged:
 
 ```cpp
 #include "angel/prime.hpp"
@@ -69,80 +110,71 @@ auto result = candidate(1009)
             | download_wilson();
 ```
 
-The source API is unchanged. `download_wilson()` now delegates to the
-native-factorial-coordinate consumer.
+## Jointly optimized API
 
-## Explicit native factorial and exact big integer
+```cpp
+#include "angel/joint_wilson.hpp"
+
+using namespace angel::prime;
+
+JointWilsonPolicy policy{};
+policy.parallel_ntt_primes = true;
+
+auto result = candidate(1009)
+            | upload_factorial_state()
+            | bind_native_factorial()
+            | project_wilson_jointly(policy);
+```
+
+`JointWilsonDownload` contains:
+
+- the ordinary Wilson residue and decision;
+- the reduced and legacy coordinate dimensions;
+- deterministic ring, polynomial, limb and allocation counters;
+- an exact outer live-coefficient peak and a conservative scratch-inclusive
+  peak bound;
+- state-integrity evidence;
+- explicit flags proving no full factorial materialization and no ordinary
+  feedback.
+
+## Exact arbitrary-precision path
+
+The full output path remains separate:
 
 ```cpp
 #include "angel/native_factorial.hpp"
 
 using namespace angel::prime;
 
-auto native = candidate(101)
-            | upload_factorial_state()
-            | bind_native_factorial();
+auto exact = candidate(101)
+           | upload_factorial_state()
+           | bind_native_factorial()
+           | derive_exact_factorial();
 
-auto fast_wilson = native | project_wilson_from_native();
-
-auto exact = native | derive_exact_factorial();
 auto integer = exact | download_exact_factorial();
 auto exact_wilson = exact | observe_wilson_from_exact();
 ```
 
-For this example, `integer.decimal` is the complete decimal expansion of
-`100!`. `fast_wilson.evidence` proves that the optimized modular algorithm
-loaded its factor count from the native result coordinate. `exact_wilson`
-computes the residue from the owned arbitrary-precision integer.
+This path materializes every bit of `100!` and is charged accordingly.  Its
+`Theta(n log n)` output-size lower bound does not apply to the modular Wilson
+consumer, which never expands `n!`.
 
-## Cyclic structure pipeline
+## Frozen and additive boundaries
 
-```cpp
-#include "angel/cyclic_structure.hpp"
+- All frozen arithmetic/state headers remain byte-identical.
+- All legacy public headers remain byte-identical.
+- Existing clients compile without source changes.
+- The new public API is additive.
+- Native state nodes rewritten: `0`.
+- Ordinary observation fed back into native state: `0`.
+- Fixed-width truncation used as arbitrary-precision proof: `0`.
 
-using namespace angel::prime;
+Read:
 
-CyclicActionPolicy policy{};
-policy.include_normalized_action = true;
-policy.compute_kernel_dimension = true;
-
-auto structure = candidate(15)
-               | upload_factorial_state()
-               | bind_cyclic_action()
-               | evaluate_cyclic_action(policy)
-               | download_cyclic_structure();
-```
-
-This exact reference observer verifies the primitive-period response,
-Ramanujan coordinates, valuation reattachment, constant-mode factorial, and
-proper-period kernel dimension.
-
-## Honest complexity boundary
-
-- Native factorial coordinate construction and storage remain succinct.
-- Rebinding the optimized Wilson path to that coordinate adds only binding
-  checks; its previous modular T-S asymptotics are unchanged.
-- Fully deriving and downloading `n!` is not succinct execution. Its output
-  alone has `Theta(n log n)` bits. The included schoolbook arbitrary-precision
-  oracle uses polynomial time and `Theta(n log n)` result space.
-- The full cyclic response remains `Theta(m^2)` fixed-width modular work and
-  `Theta(m)` coefficient space.
-
-No `O(log n)` full-integer output, polylogarithmic Wilson execution,
-information-boundary optimality, next-prime transition, or native Prime-Birth
-compiler is claimed.
-
-## Compatibility and structure
-
-- All 16 previously published public headers are byte-preserved.
-- All 13 sealed source headers are byte-preserved.
-- The static-library target remains `angel_causal_boundary`.
-- Public code filenames and symbols use semantic names, not release codenames.
-- Historical lineage names are confined to sealed source, one private adapter,
-  and explanatory document prose.
-
-Read [native factorial](docs/native_factorial.md),
-[cyclic structure](docs/cyclic_structure.md),
-[complexity](docs/complexity.md),
-[state integrity](docs/state_integrity.md), and
-[compatibility](docs/compatibility.md) before integration.
+- [Joint time-space optimization](docs/joint_time_space_optimization.md)
+- [Time and space complexity](docs/complexity.md)
+- [Native factorial semantics](docs/native_factorial.md)
+- [Architecture](docs/architecture.md)
+- [State integrity](docs/state_integrity.md)
+- [Limitations](docs/limitations.md)
+- [Compatibility](docs/compatibility.md)
