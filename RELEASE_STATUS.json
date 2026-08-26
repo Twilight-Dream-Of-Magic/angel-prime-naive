@@ -1,5 +1,6 @@
 {
   "sdk_version": "1.2.0",
+  "annals_revision": "2026-08-26",
   "compatibility_line_header_version": "1.1.0",
   "status": "COMPLETE_SCOPED_SDK_WITH_JOINT_LOCAL_PARETO_OPTIMIZATION",
   "compatibility": {
@@ -15,6 +16,25 @@
     "wilson_factor_count_source": "native_factorial_coordinate",
     "candidate_role": "modulus_and_independent_consistency_check",
     "ordinary_feedback_to_arithmetic": false
+  },
+  "high_dimensional": {
+    "three_class_value": true,
+    "classes": [
+      "ordinary",
+      "ordered_history",
+      "singular_ideal"
+    ],
+    "hadd_hsub_checked_exact": true,
+    "hmul_ordered_noncommutative": true,
+    "singular_two_sided_ideal": true,
+    "hdiv_central_scalar_reconstruction": true,
+    "division_by_zero_retains_numerator": true,
+    "noncentral_hdiv_continuation": true,
+    "native_functor_identity_composition": true,
+    "observation_non_authoritative": true,
+    "class_quantum_structural_interference": true,
+    "exact_entanglement_minor_certificate": true,
+    "physical_quantum_claimed": false
   },
   "joint_wilson": {
     "complement_pairing_identity": true,
@@ -35,6 +55,7 @@
     "peak_space_strictly_reduced_on_frozen_domain": true,
     "peak_limbs_strictly_reduced_on_frozen_domain": true,
     "materialized_coordinate_strictly_reduced_on_frozen_domain": true,
+    "legacy_coordinate_definition": "block_coefficients + 2 * full_blocks",
     "time_asymptotically_improved": false,
     "space_asymptotically_improved": false,
     "both_improved_in_same_implementation": true,
@@ -60,7 +81,9 @@
     "joint_asymptotic_improvement": false,
     "arbitrary_precision_wilson_modulus": false,
     "next_prime_transition": false,
-    "prime_birth_compiler": false
+    "prime_birth_compiler": false,
+    "general_noncentral_hdiv": false,
+    "physical_quantum_dynamics": false
   },
   "verification": {
     "debug_optimized_identical": true,
@@ -80,10 +103,24 @@
       100,
       1000
     ],
-    "cmake_debug_ctest": "PASS",
-    "cmake_release_ctest": "PASS",
-    "cmake_sanitizer_ctest": "PASS",
-    "cmake_sanitizer_examples_and_probes_link": "PASS",
-    "negative_compile_cases": 11
+    "cmake_frontend_current_environment": "SKIPPED_EXECUTABLE_UNAVAILABLE",
+    "portable_build_and_test": "PASS",
+    "negative_compile_cases": 12,
+    "polynomial_ring_differential": "PASS",
+    "parallel_serial_ntt_equivalence": "PASS",
+    "derived_observation_tamper_rejected": "PASS",
+    "tri_class_axiom_model": "PASS",
+    "high_dimensional_four_operations": "PASS",
+    "causal_functor_laws": "PASS",
+    "class_quantum_history_algebra": "PASS",
+    "entanglement_minor_certificate": "PASS"
+  },
+  "publication": {
+    "annals_pages": 65,
+    "engineering_audit_pages": 6,
+    "difficult_proofs_in_appendix": true,
+    "computational_evidence_in_appendix": true,
+    "engineering_audit_in_appendix": true,
+    "color_edition": true
   }
 }

@@ -1,0 +1,10 @@
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/negative_compile/high_dimensional_observation_cannot_reenter.cpp: In function ‘int main()’:
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/negative_compile/high_dimensional_observation_cannot_reenter.cpp:5:58: error: use of deleted function ‘angel::high::MazeState angel::high::promote_observation(const DerivedObservation&)’
+    5 |     auto illegal_state = angel::high::promote_observation(observation);
+      |                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~~
+In file included from /workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/high_dimensional/class_quantum.hpp:3,
+                 from /workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/high_dimensional.hpp:4,
+                 from /workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/negative_compile/high_dimensional_observation_cannot_reenter.cpp:1:
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/high_dimensional/functor.hpp:147:11: note: declared here
+  147 | MazeState promote_observation(const DerivedObservation&) = delete;
+      |           ^~~~~~~~~~~~~~~~~~~

@@ -1,0 +1,7 @@
+joint_wilson_tests=PASS
+continuous_public_candidates=1023
+continuous_pareto_audits=2047
+exact_factorial_fixtures=0,1,20,100,1000
+native_state_nodes_rewritten=0
+ordinary_feedback=0
+fixed_width_truncation=0

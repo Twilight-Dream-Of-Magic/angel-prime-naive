@@ -71,3 +71,12 @@ different types.
 
 Exact factorial and Wilson observations are also terminal ordinary values.
 Their types have no conversion or operator path back into native execution.
+
+## Derived observation-map validation
+
+`validate_download_packet` compares a transported or displayed download with
+the observation already bound to the canonical closed state. It checks the
+complete public observation, causal-cut identity, and terminal-only flags. The
+comparison is one-way: the derived packet is never written back. A test mutates
+a copied primitive column, requires rejection, and then verifies that the
+canonical state summary is unchanged.

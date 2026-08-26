@@ -1,62 +1,62 @@
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/negative_compile/ordinary_download_cannot_continue.cpp: In function 'void forbidden(const angel::boundary::DownloadPacket&)':
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/negative_compile/ordinary_download_cannot_continue.cpp:5:32: error: no match for 'operator|' (operand types are 'const angel::boundary::DownloadPacket' and 'angel::boundary::QuotientOperation')
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/negative_compile/ordinary_download_cannot_continue.cpp: In function ‘void forbidden(const angel::boundary::DownloadPacket&)’:
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/negative_compile/ordinary_download_cannot_continue.cpp:5:32: error: no match for ‘operator|’ (operand types are ‘const angel::boundary::DownloadPacket’ and ‘angel::boundary::QuotientOperation’)
     5 |     static_cast<void>(ordinary | angel::boundary::quotient_to(3U));
       |                       ~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
       |                       |                                      |
       |                       const angel::boundary::DownloadPacket  angel::boundary::QuotientOperation
-In file included from /mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary.hpp:7,
-                 from /mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/negative_compile/ordinary_download_cannot_continue.cpp:1:
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:112:21: note: candidate: 'angel::boundary::State angel::boundary::operator|(const EncodedOrder&, UploadOperation)'
+In file included from /workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary.hpp:7,
+                 from /workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/negative_compile/ordinary_download_cannot_continue.cpp:1:
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:112:21: note: candidate: ‘angel::boundary::State angel::boundary::operator|(const EncodedOrder&, UploadOperation)’
   112 | [[nodiscard]] State operator|(const EncodedOrder& input, UploadOperation operation);
       |                     ^~~~~~~~
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:112:51: note:   no known conversion for argument 1 from 'const angel::boundary::DownloadPacket' to 'const angel::boundary::EncodedOrder&'
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:112:51: note:   no known conversion for argument 1 from ‘const angel::boundary::DownloadPacket’ to ‘const angel::boundary::EncodedOrder&’
   112 | [[nodiscard]] State operator|(const EncodedOrder& input, UploadOperation operation);
       |                               ~~~~~~~~~~~~~~~~~~~~^~~~~
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:113:21: note: candidate: 'angel::boundary::State angel::boundary::operator|(const State&, ChangePresentationOperation)'
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:113:21: note: candidate: ‘angel::boundary::State angel::boundary::operator|(const State&, ChangePresentationOperation)’
   113 | [[nodiscard]] State operator|(const State& state, ChangePresentationOperation operation);
       |                     ^~~~~~~~
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:113:44: note:   no known conversion for argument 1 from 'const angel::boundary::DownloadPacket' to 'const angel::boundary::State&'
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:113:44: note:   no known conversion for argument 1 from ‘const angel::boundary::DownloadPacket’ to ‘const angel::boundary::State&’
   113 | [[nodiscard]] State operator|(const State& state, ChangePresentationOperation operation);
       |                               ~~~~~~~~~~~~~^~~~~
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:114:21: note: candidate: 'angel::boundary::State angel::boundary::operator|(const State&, QuotientOperation)'
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:114:21: note: candidate: ‘angel::boundary::State angel::boundary::operator|(const State&, QuotientOperation)’
   114 | [[nodiscard]] State operator|(const State& state, QuotientOperation operation);
       |                     ^~~~~~~~
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:114:44: note:   no known conversion for argument 1 from 'const angel::boundary::DownloadPacket' to 'const angel::boundary::State&'
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:114:44: note:   no known conversion for argument 1 from ‘const angel::boundary::DownloadPacket’ to ‘const angel::boundary::State&’
   114 | [[nodiscard]] State operator|(const State& state, QuotientOperation operation);
       |                               ~~~~~~~~~~~~~^~~~~
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:115:21: note: candidate: 'angel::boundary::State angel::boundary::operator|(const State&, ContinueOperation)'
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:115:21: note: candidate: ‘angel::boundary::State angel::boundary::operator|(const State&, ContinueOperation)’
   115 | [[nodiscard]] State operator|(const State& state, ContinueOperation operation);
       |                     ^~~~~~~~
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:115:44: note:   no known conversion for argument 1 from 'const angel::boundary::DownloadPacket' to 'const angel::boundary::State&'
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:115:44: note:   no known conversion for argument 1 from ‘const angel::boundary::DownloadPacket’ to ‘const angel::boundary::State&’
   115 | [[nodiscard]] State operator|(const State& state, ContinueOperation operation);
       |                               ~~~~~~~~~~~~~^~~~~
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:116:32: note: candidate: 'angel::boundary::NativeCheckpoint angel::boundary::operator|(const State&, ExportCheckpointOperation)'
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:116:32: note: candidate: ‘angel::boundary::NativeCheckpoint angel::boundary::operator|(const State&, ExportCheckpointOperation)’
   116 | [[nodiscard]] NativeCheckpoint operator|(
       |                                ^~~~~~~~
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:117:18: note:   no known conversion for argument 1 from 'const angel::boundary::DownloadPacket' to 'const angel::boundary::State&'
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:117:18: note:   no known conversion for argument 1 from ‘const angel::boundary::DownloadPacket’ to ‘const angel::boundary::State&’
   117 |     const State& state, ExportCheckpointOperation operation);
       |     ~~~~~~~~~~~~~^~~~~
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:118:21: note: candidate: 'angel::boundary::State angel::boundary::operator|(const NativeCheckpoint&, ImportCheckpointOperation)'
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:118:21: note: candidate: ‘angel::boundary::State angel::boundary::operator|(const NativeCheckpoint&, ImportCheckpointOperation)’
   118 | [[nodiscard]] State operator|(
       |                     ^~~~~~~~
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:119:29: note:   no known conversion for argument 1 from 'const angel::boundary::DownloadPacket' to 'const angel::boundary::NativeCheckpoint&'
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:119:29: note:   no known conversion for argument 1 from ‘const angel::boundary::DownloadPacket’ to ‘const angel::boundary::NativeCheckpoint&’
   119 |     const NativeCheckpoint& checkpoint, ImportCheckpointOperation operation);
       |     ~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:120:33: note: candidate: 'angel::boundary::ClosedObservation angel::boundary::operator|(const State&, ObserveOrderOperation)'
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:120:33: note: candidate: ‘angel::boundary::ClosedObservation angel::boundary::operator|(const State&, ObserveOrderOperation)’
   120 | [[nodiscard]] ClosedObservation operator|(
       |                                 ^~~~~~~~
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:121:18: note:   no known conversion for argument 1 from 'const angel::boundary::DownloadPacket' to 'const angel::boundary::State&'
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:121:18: note:   no known conversion for argument 1 from ‘const angel::boundary::DownloadPacket’ to ‘const angel::boundary::State&’
   121 |     const State& state, ObserveOrderOperation operation);
       |     ~~~~~~~~~~~~~^~~~~
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:122:33: note: candidate: 'angel::boundary::ClosedObservation angel::boundary::operator|(const State&, ObservePrimitiveOperation)'
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:122:33: note: candidate: ‘angel::boundary::ClosedObservation angel::boundary::operator|(const State&, ObservePrimitiveOperation)’
   122 | [[nodiscard]] ClosedObservation operator|(
       |                                 ^~~~~~~~
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:123:18: note:   no known conversion for argument 1 from 'const angel::boundary::DownloadPacket' to 'const angel::boundary::State&'
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:123:18: note:   no known conversion for argument 1 from ‘const angel::boundary::DownloadPacket’ to ‘const angel::boundary::State&’
   123 |     const State& state, ObservePrimitiveOperation operation);
       |     ~~~~~~~~~~~~~^~~~~
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:124:30: note: candidate: 'angel::boundary::DownloadPacket angel::boundary::operator|(const ClosedObservation&, DownloadOperation)'
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:124:30: note: candidate: ‘angel::boundary::DownloadPacket angel::boundary::operator|(const ClosedObservation&, DownloadOperation)’
   124 | [[nodiscard]] DownloadPacket operator|(
       |                              ^~~~~~~~
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:125:30: note:   no known conversion for argument 1 from 'const angel::boundary::DownloadPacket' to 'const angel::boundary::ClosedObservation&'
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/pipeline.hpp:125:30: note:   no known conversion for argument 1 from ‘const angel::boundary::DownloadPacket’ to ‘const angel::boundary::ClosedObservation&’
   125 |     const ClosedObservation& closed, DownloadOperation operation);
       |     ~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~

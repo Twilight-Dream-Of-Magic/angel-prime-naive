@@ -9,8 +9,11 @@ add_library(angel_causal_boundary STATIC
     src/cyclic_structure.cpp
     src/diagnostics.cpp
     src/encoding.cpp
+    src/factorial_maze.cpp
+    src/high_dimensional.cpp
     src/joint_wilson.cpp
     src/native_factorial.cpp
+    src/observation_integrity.cpp
     src/prime_pipeline.cpp
     src/session.cpp
     src/state.cpp)
@@ -59,6 +62,9 @@ if(ANGEL_BUILD_TESTS)
     add_angel_test(joint_wilson_tests tests/joint_wilson_tests.cpp)
     add_angel_test(prime_pipeline_tests tests/prime_pipeline_tests.cpp)
     add_angel_test(behavior_tests tests/behavior_tests.cpp)
+    add_angel_test(polynomial_ring_tests tests/polynomial_ring_tests.cpp)
+    add_angel_test(high_dimensional_tests tests/high_dimensional_tests.cpp)
+    add_angel_test(factorial_maze_tests tests/factorial_maze_tests.cpp)
 
     add_executable(complexity_probe tests/complexity_probe.cpp)
     add_executable(joint_wilson_operation_probe tests/joint_wilson_operation_probe.cpp)
@@ -82,4 +88,13 @@ if(ANGEL_BUILD_TESTS)
 
     add_executable(joint_wilson_example examples/joint_wilson_pipeline.cpp)
     target_link_libraries(joint_wilson_example PRIVATE angel_causal_boundary)
+
+    add_executable(high_dimensional_example examples/high_dimensional_pipeline.cpp)
+    target_link_libraries(high_dimensional_example PRIVATE angel_causal_boundary)
+
+    add_executable(factorial_maze_example examples/factorial_maze_pipeline.cpp)
+    target_link_libraries(factorial_maze_example PRIVATE angel_causal_boundary)
+
+    add_executable(angel_structure_probe experiments/angel_structure_probe.cpp)
+    target_link_libraries(angel_structure_probe PRIVATE angel_causal_boundary)
 endif()

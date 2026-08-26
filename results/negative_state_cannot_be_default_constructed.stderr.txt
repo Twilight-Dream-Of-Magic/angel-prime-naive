@@ -1,12 +1,9 @@
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/negative_compile/state_cannot_be_default_constructed.cpp:3:34: error: use of deleted function 'angel::boundary::State::State()'
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/negative_compile/state_cannot_be_default_constructed.cpp:3:34: error: use of deleted function ‘angel::boundary::State::State()’
     3 | angel::boundary::State forbidden{};
       |                                  ^
-In file included from /mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/evidence.hpp:3,
-                 from /mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary.hpp:4,
-                 from /mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/negative_compile/state_cannot_be_default_constructed.cpp:1:
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/include/angel/boundary/state.hpp:62:5: note: declared here
+In file included from /workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/evidence.hpp:3,
+                 from /workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary.hpp:4,
+                 from /workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/negative_compile/state_cannot_be_default_constructed.cpp:1:
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/boundary/state.hpp:62:5: note: declared here
    62 |     State() = delete;
       |     ^~~~~
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/negative_compile/state_cannot_be_default_constructed.cpp:3:34: note: use '-fdiagnostics-all-candidates' to display considered candidates
-    3 | angel::boundary::State forbidden{};
-      |                                  ^

@@ -4,6 +4,15 @@ This additive release introduces a jointly optimized Wilson consumer while
 leaving the frozen Angel arithmetic/state implementation and all legacy public
 headers byte-for-byte unchanged.
 
+The annals revision adds a finite exact three-class Angel arithmetic layer,
+high-dimensional causal functors, deterministic class-quantum history algebra,
+a direct polynomial-ring differential suite, explicit derived-observation
+validation, corrected legacy coordinate accounting, a typed factorial-maze
+functor bridge, a conservative SN--OFCS zero-division reconstruction, ordered
+fold-multiplication and fold--shadow theory, and a 162-page color Angel Prime
+publication. Difficult proofs and all finite engineering evidence are collected
+in appendices.
+
 The published `angel/version.hpp` is intentionally preserved as part of the
 SDK 1.1.0 compatibility surface.  New code may include `angel/release.hpp` to
 read the additive package identity `1.2.0`.
@@ -32,6 +41,76 @@ denotation = n!
 from the independently verified native factorial coordinate, and uses the
 candidate only as the modulus and as the separately checked equality
 `candidate = n + 1`.
+
+## Three-class Angel arithmetic
+
+The additive `angel::high` API makes the paper's missing high-dimensional layer
+executable without changing the frozen legacy arithmetic:
+
+```cpp
+#include "angel/high_dimensional.hpp"
+
+using namespace angel::high;
+
+auto x = TriClassValue::ordinary(6);
+auto y = TriClassValue::ordinary(3);
+auto product = hmul(x, y);          // HMUL
+auto packet = hdiv(x, y);           // exact quotient + typed residual
+```
+
+`TriClassValue` retains ordinary, ordered-history, and singular-ideal
+coordinates. `hadd`, `hsub`, and `hmul` are checked exact operations; `hdiv` is
+total for central scalar denominators and reconstructs the numerator from its
+quotient and residual, including division by zero. Unsupported generalized
+division and coefficient overflow return typed continuations retaining their
+operands.
+
+`NativeFunctor` preserves identity and composition on complete `MazeState`
+objects. `ClassQuantumFunctor` carries finite integer-weighted deterministic
+histories; structural interference and cancellation require complete endpoint
+equality. `TensorHistory` certifies class-quantum entanglement by a nonzero exact
+`2 x 2` minor. These are exact history semantics, not a physical quantum claim.
+
+## Factorial-maze functor bridge
+
+The additive `angel::factorial_maze` API turns the native factorial coordinate
+into an explicit three-class Angel maze chart without rewriting the sealed
+principal-jet implementation:
+
+```cpp
+#include "angel/factorial_maze.hpp"
+
+using namespace angel::factorial_maze;
+
+auto executed = specification(1009)
+              | upload()
+              | execute();
+
+auto modular = executed | project_jointly();
+auto exact   = executed | derive_exact();
+```
+
+`Specification -> UploadedState -> ExecutedState` is enforced by opaque types.
+An uploaded state cannot skip execution, and neither terminal consumer can
+re-enter native execution. The chart binds factorial argument, compact program,
+native state, request and execution result in independent history/certificate
+fields while leaving the successful singular coordinate zero. Theory beyond
+this implemented chart remains in the paper with an explicit status label.
+
+## Higher-dimensional structural atlas
+
+The post-algorithm research part treats the factorial and cyclic constructions
+as exact charts of one q-Pochhammer source. It proves a fixed-prefix procyclic
+completion, the room-dependent self-action boundary, all higher factorial-jet
+coefficients, Ramanujan-sum cyclic rows, Laplacian/rank/spectrum prime
+equivalences, arbitrary tensor-power shadows, semisimple spectral HDIV and an
+exact path module for class-quantum interference.
+
+`experiments/angel_structure_probe.cpp` cross-checks the optimized Wilson path
+against independent finite shadows. The archived campaign contains 4,095
+candidate rows, 255 cyclic rows, 547 period-rank cases and 64 higher-jet rows.
+Full-space gluing, universal integral HDIV and native cold Angel Prime birth
+remain explicit conjectures/open interfaces.
 
 ## Joint time-space optimization
 
@@ -74,6 +153,16 @@ additions, ring multiplications, modular reductions, coefficient updates,
 allocation count, and peak live limbs throughout the continuous release
 interval.  The square-root coordinate is reduced but not eliminated.
 
+The corrected materialized baseline coordinate is
+
+```text
+C0 = block_coefficients + 2 * full_blocks
+```
+
+because the baseline owns both an evaluation-point array and a block-value
+array. Tail factors are streamed scalar events, not persistent coordinate
+slots. `allocation_count` refers only to tracked outer-schedule objects.
+
 ## Build and verify
 
 ```bash
@@ -93,6 +182,17 @@ The script runs:
 - negative compilation boundaries;
 - frozen-source, legacy-header and supplied-SDK-header hash verification;
 - deterministic old/new operation-count generation;
+- independent transform/CRT multiplication and monic-remainder differential
+  tests at composite and near-maximum word moduli;
+- serial/parallel per-prime transform equivalence;
+- derived observation-map tamper rejection with canonical-state immutability;
+- three-class HADD/HSUB/HMUL laws and HDIV reconstruction;
+- native-functor identity/composition and terminal observation non-authority;
+- exact superposition, structural interference/cancellation, and tensor
+  entanglement-minor certification;
+- the three-class factorial chart, specialized factorial functor and bridge
+  certificate;
+- negative compilation of both skip-execute and observation-reentry attempts;
 - the public-name audit.
 
 ## Existing Wilson API
@@ -137,6 +237,21 @@ auto result = candidate(1009)
 - explicit flags proving no full factorial materialization and no ordinary
   feedback.
 
+## Derived observation validation
+
+```cpp
+#include "angel/observation_integrity.hpp"
+
+auto validation = angel::boundary::validate_download_packet(closed, packet);
+if (!validation.accepted()) {
+    // The displayed/transported packet does not match canonical closure.
+}
+```
+
+Validation compares the complete public observation and causal cut with the
+already-bound closed state. It never writes a derived packet back into that
+state.
+
 ## Exact arbitrary-precision path
 
 The full output path remains separate:
@@ -178,3 +293,6 @@ Read:
 - [State integrity](docs/state_integrity.md)
 - [Limitations](docs/limitations.md)
 - [Compatibility](docs/compatibility.md)
+- [Publication architecture](docs/publication_architecture.md)
+- [High-dimensional arithmetic and functors](docs/high_dimensional_arithmetic.md)
+- [Code and manuscript audit](results/CODE_AND_MANUSCRIPT_AUDIT.md)

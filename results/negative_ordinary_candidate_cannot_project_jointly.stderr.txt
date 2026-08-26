@@ -1,0 +1,64 @@
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/negative_compile/ordinary_candidate_cannot_project_jointly.cpp: In function ‘int main()’:
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/negative_compile/ordinary_candidate_cannot_project_jointly.cpp:5:41: error: no match for ‘operator|’ (operand types are ‘angel::prime::Candidate’ and ‘angel::prime::ProjectWilsonJointly’)
+    5 |     const auto result = candidate(101U) | project_wilson_jointly();
+      |                         ~~~~~~~~~~~~~~~ ^ ~~~~~~~~~~~~~~~~~~~~~~~~
+      |                                  |                              |
+      |                                  angel::prime::Candidate        angel::prime::ProjectWilsonJointly
+In file included from /workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/prime.hpp:5,
+                 from /workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/native_factorial.hpp:3,
+                 from /workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/joint_wilson.hpp:3,
+                 from /workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/negative_compile/ordinary_candidate_cannot_project_jointly.cpp:1:
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/prime/pipeline.hpp:28:30: note: candidate: ‘angel::prime::FactorialState angel::prime::operator|(Candidate, UploadFactorialState)’
+   28 | [[nodiscard]] FactorialState operator|(
+      |                              ^~~~~~~~
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/prime/pipeline.hpp:29:43: note:   no known conversion for argument 2 from ‘angel::prime::ProjectWilsonJointly’ to ‘angel::prime::UploadFactorialState’
+   29 |     Candidate input, UploadFactorialState operation);
+      |                      ~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/prime/pipeline.hpp:30:28: note: candidate: ‘angel::prime::QuotientView angel::prime::operator|(const FactorialState&, BindQuotientView)’
+   30 | [[nodiscard]] QuotientView operator|(
+      |                            ^~~~~~~~
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/prime/pipeline.hpp:31:27: note:   no known conversion for argument 1 from ‘angel::prime::Candidate’ to ‘const angel::prime::FactorialState&’
+   31 |     const FactorialState& state, BindQuotientView operation);
+      |     ~~~~~~~~~~~~~~~~~~~~~~^~~~~
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/prime/pipeline.hpp:32:24: note: candidate: ‘angel::prime::Download angel::prime::operator|(const QuotientView&, DownloadWilsonObservation)’
+   32 | [[nodiscard]] Download operator|(
+      |                        ^~~~~~~~
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/prime/pipeline.hpp:33:25: note:   no known conversion for argument 1 from ‘angel::prime::Candidate’ to ‘const angel::prime::QuotientView&’
+   33 |     const QuotientView& view, DownloadWilsonObservation operation);
+      |     ~~~~~~~~~~~~~~~~~~~~^~~~
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/native_factorial.hpp:178:35: note: candidate: ‘angel::prime::NativeFactorialView angel::prime::operator|(const FactorialState&, BindNativeFactorial)’
+  178 | [[nodiscard]] NativeFactorialView operator|(
+      |                                   ^~~~~~~~
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/native_factorial.hpp:179:27: note:   no known conversion for argument 1 from ‘angel::prime::Candidate’ to ‘const angel::prime::FactorialState&’
+  179 |     const FactorialState& state, BindNativeFactorial operation);
+      |     ~~~~~~~~~~~~~~~~~~~~~~^~~~~
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/native_factorial.hpp:180:35: note: candidate: ‘angel::prime::ExactFactorialValue angel::prime::operator|(const NativeFactorialView&, DeriveExactFactorial)’
+  180 | [[nodiscard]] ExactFactorialValue operator|(
+      |                                   ^~~~~~~~
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/native_factorial.hpp:181:32: note:   no known conversion for argument 1 from ‘angel::prime::Candidate’ to ‘const angel::prime::NativeFactorialView&’
+  181 |     const NativeFactorialView& view, DeriveExactFactorial operation);
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/native_factorial.hpp:182:38: note: candidate: ‘angel::prime::ExactFactorialDownload angel::prime::operator|(const ExactFactorialValue&, DownloadExactFactorial)’
+  182 | [[nodiscard]] ExactFactorialDownload operator|(
+      |                                      ^~~~~~~~
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/native_factorial.hpp:183:32: note:   no known conversion for argument 1 from ‘angel::prime::Candidate’ to ‘const angel::prime::ExactFactorialValue&’
+  183 |     const ExactFactorialValue& value, DownloadExactFactorial operation);
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/native_factorial.hpp:184:36: note: candidate: ‘angel::prime::NativeWilsonDownload angel::prime::operator|(const NativeFactorialView&, ProjectWilsonFromNative)’
+  184 | [[nodiscard]] NativeWilsonDownload operator|(
+      |                                    ^~~~~~~~
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/native_factorial.hpp:185:32: note:   no known conversion for argument 1 from ‘angel::prime::Candidate’ to ‘const angel::prime::NativeFactorialView&’
+  185 |     const NativeFactorialView& view, ProjectWilsonFromNative operation);
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/native_factorial.hpp:186:36: note: candidate: ‘angel::prime::NativeWilsonDownload angel::prime::operator|(const ExactFactorialValue&, ObserveWilsonFromExact)’
+  186 | [[nodiscard]] NativeWilsonDownload operator|(
+      |                                    ^~~~~~~~
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/native_factorial.hpp:187:32: note:   no known conversion for argument 1 from ‘angel::prime::Candidate’ to ‘const angel::prime::ExactFactorialValue&’
+  187 |     const ExactFactorialValue& value, ObserveWilsonFromExact operation);
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/joint_wilson.hpp:129:35: note: candidate: ‘angel::prime::JointWilsonDownload angel::prime::operator|(const NativeFactorialView&, ProjectWilsonJointly)’
+  129 | [[nodiscard]] JointWilsonDownload operator|(
+      |                                   ^~~~~~~~
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/include/angel/joint_wilson.hpp:130:32: note:   no known conversion for argument 1 from ‘angel::prime::Candidate’ to ‘const angel::prime::NativeFactorialView&’
+  130 |     const NativeFactorialView& view, ProjectWilsonJointly operation);
+      |     ~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~

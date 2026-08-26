@@ -1,0 +1,50 @@
+[  2%] Building CXX object CMakeFiles/angel_causal_boundary.dir/src/cyclic_structure.cpp.o
+[  5%] Building CXX object CMakeFiles/angel_causal_boundary.dir/src/boundary_pipeline.cpp.o
+[  8%] Building CXX object CMakeFiles/angel_causal_boundary.dir/src/diagnostics.cpp.o
+[ 11%] Building CXX object CMakeFiles/angel_causal_boundary.dir/src/encoding.cpp.o
+[ 13%] Building CXX object CMakeFiles/angel_causal_boundary.dir/src/joint_wilson.cpp.o
+[ 16%] Building CXX object CMakeFiles/angel_causal_boundary.dir/src/native_factorial.cpp.o
+[ 19%] Building CXX object CMakeFiles/angel_causal_boundary.dir/src/prime_pipeline.cpp.o
+[ 22%] Building CXX object CMakeFiles/angel_causal_boundary.dir/src/session.cpp.o
+[ 25%] Building CXX object CMakeFiles/angel_causal_boundary.dir/src/state.cpp.o
+[ 27%] Linking CXX static library libangel_causal_boundary.a
+[ 27%] Built target angel_causal_boundary
+[ 33%] Building CXX object CMakeFiles/cyclic_structure_tests.dir/tests/cyclic_structure_tests.cpp.o
+[ 33%] Building CXX object CMakeFiles/boundary_pipeline_tests.dir/tests/boundary_pipeline_tests.cpp.o
+[ 36%] Linking CXX executable cyclic_structure_tests
+[ 38%] Linking CXX executable boundary_pipeline_tests
+[ 38%] Built target cyclic_structure_tests
+[ 41%] Building CXX object CMakeFiles/native_factorial_tests.dir/tests/native_factorial_tests.cpp.o
+[ 41%] Built target boundary_pipeline_tests
+[ 44%] Building CXX object CMakeFiles/joint_wilson_tests.dir/tests/joint_wilson_tests.cpp.o
+[ 47%] Linking CXX executable native_factorial_tests
+[ 47%] Built target native_factorial_tests
+[ 50%] Building CXX object CMakeFiles/prime_pipeline_tests.dir/tests/prime_pipeline_tests.cpp.o
+[ 52%] Linking CXX executable prime_pipeline_tests
+[ 52%] Built target prime_pipeline_tests
+[ 55%] Building CXX object CMakeFiles/behavior_tests.dir/tests/behavior_tests.cpp.o
+[ 58%] Linking CXX executable behavior_tests
+[ 58%] Built target behavior_tests
+[ 61%] Building CXX object CMakeFiles/complexity_probe.dir/tests/complexity_probe.cpp.o
+[ 63%] Linking CXX executable joint_wilson_tests
+[ 63%] Built target joint_wilson_tests
+[ 66%] Building CXX object CMakeFiles/joint_wilson_operation_probe.dir/tests/joint_wilson_operation_probe.cpp.o
+[ 69%] Linking CXX executable complexity_probe
+[ 69%] Built target complexity_probe
+[ 72%] Building CXX object CMakeFiles/boundary_pipeline_example.dir/examples/boundary_pipeline.cpp.o
+[ 75%] Linking CXX executable boundary_pipeline_example
+[ 75%] Built target boundary_pipeline_example
+[ 77%] Building CXX object CMakeFiles/prime_pipeline_example.dir/examples/prime_pipeline.cpp.o
+[ 80%] Linking CXX executable prime_pipeline_example
+[ 83%] Linking CXX executable joint_wilson_operation_probe
+[ 83%] Built target joint_wilson_operation_probe
+[ 83%] Built target prime_pipeline_example
+[ 88%] Building CXX object CMakeFiles/native_factorial_example.dir/examples/native_factorial_pipeline.cpp.o
+[ 88%] Building CXX object CMakeFiles/cyclic_structure_example.dir/examples/cyclic_structure_pipeline.cpp.o
+[ 91%] Linking CXX executable native_factorial_example
+[ 94%] Linking CXX executable cyclic_structure_example
+[ 94%] Built target native_factorial_example
+[ 97%] Building CXX object CMakeFiles/joint_wilson_example.dir/examples/joint_wilson_pipeline.cpp.o
+[ 97%] Built target cyclic_structure_example
+[100%] Linking CXX executable joint_wilson_example
+[100%] Built target joint_wilson_example

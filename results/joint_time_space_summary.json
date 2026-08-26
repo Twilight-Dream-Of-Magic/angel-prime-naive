@@ -1,0 +1,41 @@
+{
+  "classification": "strict_local_joint_pareto_improvement",
+  "old_time_complexity": "O(M(sqrt(n)) log n + sqrt(n))",
+  "new_time_complexity": "O(M(sqrt(n/2)) log n + sqrt(n/2)) + O(1)",
+  "old_space_complexity": "O(sqrt(n) log n) live coefficients",
+  "new_space_complexity": "O(sqrt(n/2) log n) live coefficients",
+  "time_asymptotically_improved": false,
+  "space_asymptotically_improved": false,
+  "both_improved_in_same_implementation": true,
+  "sqrt_coordinate_eliminated": false,
+  "full_factorial_materialized": false,
+  "wilson_consumed_native_factorial": true,
+  "angel_state_changed": false,
+  "continuous_audit": {
+    "candidate_start": 2,
+    "candidate_end": 2048,
+    "inputs": 2047,
+    "strict_time_work_reduction": true,
+    "strict_ring_addition_reduction": true,
+    "strict_ring_multiplication_reduction": true,
+    "strict_modular_reduction_reduction": true,
+    "strict_coefficient_update_reduction": true,
+    "strict_allocation_reduction": true,
+    "strict_peak_space_reduction": true,
+    "strict_peak_limb_reduction": true,
+    "strict_coordinate_reduction": true
+  },
+  "frozen_growth_sequence": {
+    "T_new_over_T_old_min": 0.44116366,
+    "T_new_over_T_old_max": 0.64170827,
+    "S_new_over_S_old_min": 0.19169256,
+    "S_new_over_S_old_max": 0.52803056,
+    "C_new_over_C_old_min": 0.19565217,
+    "C_new_over_C_old_max": 0.35329341
+  },
+  "integrity": {
+    "native_state_nodes_rewritten": 0,
+    "ordinary_feedback": 0,
+    "fixed_width_truncation": 0
+  }
+}

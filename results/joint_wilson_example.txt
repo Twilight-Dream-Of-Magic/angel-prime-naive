@@ -1,0 +1,6 @@
+candidate=1009
+factorial_residue=1008
+prime=yes
+work_units=1204
+peak_live_coefficients_upper_bound=177
+verified=yes

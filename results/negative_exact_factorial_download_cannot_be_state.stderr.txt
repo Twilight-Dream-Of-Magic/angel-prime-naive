@@ -1,4 +1,4 @@
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/negative_compile/exact_factorial_download_cannot_be_state.cpp: In function 'int main()':
-/mnt/data/angel_sdk_work/Angel_CausalBoundary_Modular_SDK_1.2.0_2026-08-26_COMPLETE/negative_compile/exact_factorial_download_cannot_be_state.cpp:10:36: error: conversion from 'const angel::prime::ExactFactorialDownload' to non-scalar type 'const angel::prime::FactorialState' requested
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/negative_compile/exact_factorial_download_cannot_be_state.cpp: In function ‘int main()’:
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/negative_compile/exact_factorial_download_cannot_be_state.cpp:10:36: error: conversion from ‘const angel::prime::ExactFactorialDownload’ to non-scalar type ‘const angel::prime::FactorialState’ requested
    10 |     const FactorialState illegal = exact;
       |                                    ^~~~~

@@ -1,0 +1,4 @@
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/negative_compile/joint_wilson_download_cannot_be_state.cpp: In function ‘int main()’:
+/workspace/scratch/79ad8c158246/final/Angel_CausalBoundary_Modular_SDK_1.2.0_Annals_Revision_2026-08-26_COMPLETE/negative_compile/joint_wilson_download_cannot_be_state.cpp:9:28: error: conversion from ‘const angel::prime::JointWilsonDownload’ to non-scalar type ‘angel::prime::FactorialState’ requested
+    9 |     FactorialState state = result;
+      |                            ^~~~~~

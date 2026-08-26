@@ -3,7 +3,7 @@ set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")" && pwd)"
 CXX="${CXX:-g++}"
-WORK="$(mktemp -d "$ROOT/.verification.XXXXXX")"
+WORK="$(mktemp -d /tmp/angel-verification.XXXXXX)"
 trap 'rm -rf -- "$WORK"' EXIT
 mkdir -p "$ROOT/results"
 
@@ -14,8 +14,11 @@ SOURCES=(
     "$ROOT/src/cyclic_structure.cpp"
     "$ROOT/src/diagnostics.cpp"
     "$ROOT/src/encoding.cpp"
+    "$ROOT/src/factorial_maze.cpp"
+    "$ROOT/src/high_dimensional.cpp"
     "$ROOT/src/joint_wilson.cpp"
     "$ROOT/src/native_factorial.cpp"
+    "$ROOT/src/observation_integrity.cpp"
     "$ROOT/src/prime_pipeline.cpp"
     "$ROOT/src/session.cpp"
     "$ROOT/src/state.cpp")
@@ -25,7 +28,10 @@ TESTS=(
     behavior_tests
     cyclic_structure_tests
     joint_wilson_tests
-    native_factorial_tests)
+    native_factorial_tests
+    polynomial_ring_tests
+    high_dimensional_tests
+    factorial_maze_tests)
 
 compile_variant() {
     local variant="$1"
@@ -75,6 +81,19 @@ done
 "$WORK/optimized/joint_wilson_operation_probe" \
     > "$ROOT/results/joint_wilson_operation_counts.csv"
 
+"$CXX" "${WARN[@]}" -O3 -DNDEBUG "${INC[@]}" \
+    "$ROOT/experiments/angel_structure_probe.cpp" \
+    "$WORK/optimized/libangel_causal_boundary.a" -pthread \
+    -o "$WORK/optimized/angel_structure_probe"
+"$WORK/optimized/angel_structure_probe" wilson \
+    > "$ROOT/results/angel_structure_wilson_probe.csv"
+"$WORK/optimized/angel_structure_probe" cyclic \
+    > "$ROOT/results/angel_structure_cyclic_shadow_probe.csv"
+"$WORK/optimized/angel_structure_probe" rank \
+    > "$ROOT/results/angel_structure_period_rank_probe.csv"
+"$WORK/optimized/angel_structure_probe" jet \
+    > "$ROOT/results/angel_structure_higher_jet_probe.csv"
+
 # Address and undefined-behavior checks. Leak detection is disabled because
 # ptrace-restricted containers cannot inspect /proc; that limitation is logged.
 compile_variant sanitized -O1 -g -fsanitize=address,undefined \
@@ -86,7 +105,13 @@ for test in "${TESTS[@]}"; do
 done
 
 : > "$ROOT/results/negative_compile_summary.txt"
-for source in "$ROOT"/negative_compile/*.cpp; do
+: > "$ROOT/results/axiomatic_negative_compile_summary.txt"
+NEGATIVE_SOURCES=("$ROOT"/negative_compile/*.cpp)
+if [[ "${#NEGATIVE_SOURCES[@]}" -ne 14 ]]; then
+    echo "NEGATIVE_COMPILE_CASE_COUNT_MISMATCH expected=14 actual=${#NEGATIVE_SOURCES[@]}" >&2
+    exit 1
+fi
+for source in "${NEGATIVE_SOURCES[@]}"; do
     name="$(basename "$source" .cpp)"
     if "$CXX" "${WARN[@]}" -I"$ROOT/include" -c "$source" \
         -o "$WORK/$name.o" \
@@ -97,6 +122,8 @@ for source in "$ROOT"/negative_compile/*.cpp; do
     fi
     echo "EXPECTED_COMPILE_FAILURE $name" \
         >> "$ROOT/results/negative_compile_summary.txt"
+    echo "EXPECTED_COMPILE_FAILURE $name" \
+        >> "$ROOT/results/axiomatic_negative_compile_summary.txt"
 done
 
 "$ROOT/tools/verify_frozen_source.sh" \
@@ -113,6 +140,7 @@ done
     echo "address_undefined_sanitizers=PASS"
     echo "leak_sanitizer=SKIPPED_PTRACE_RESTRICTED_ENVIRONMENT"
     echo "negative_compile_firewall=PASS"
+    echo "negative_compile_cases=${#NEGATIVE_SOURCES[@]}"
     echo "frozen_source_hashes=PASS"
     echo "legacy_public_headers_byte_preserved=YES"
     echo "supplied_sdk_public_headers_byte_preserved=YES"
@@ -136,6 +164,24 @@ done
     echo "arithmetic_state_rewritten=NO"
     echo "arithmetic_state_compressed=NO"
     echo "ordinary_feedback=NO"
+    echo "polynomial_ring_differential=PASS"
+    echo "parallel_serial_ntt_equivalence=PASS"
+    echo "derived_observation_tamper_rejected=PASS"
+    echo "tri_class_axiom_model=PASS"
+    echo "high_dimensional_four_operations=PASS"
+    echo "causal_functor_laws=PASS"
+    echo "class_quantum_history_algebra=PASS"
+    echo "entanglement_minor_certificate=PASS"
+    echo "tri_class_factorial_chart=PASS"
+    echo "factorial_functor_bridge=PASS"
+    echo "same_shadow_different_factorial_history=PASS"
+    echo "angel_structure_wilson_probe_rows=4095"
+    echo "angel_structure_cyclic_shadow_probe_rows=255"
+    echo "angel_structure_period_rank_probe=PASS"
+    echo "angel_structure_higher_jet_probe_rows=64"
 } > "$ROOT/results/BUILD_AND_TEST_COMPLETE.log"
+
+install -m 0644 "$ROOT/results/BUILD_AND_TEST_COMPLETE.log" \
+    "$ROOT/results/AXIOMATIC_HIGH_DIMENSIONAL_BUILD_AND_TEST_COMPLETE.log"
 
 cat "$ROOT/results/BUILD_AND_TEST_COMPLETE.log"

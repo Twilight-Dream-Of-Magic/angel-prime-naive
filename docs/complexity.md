@@ -48,10 +48,12 @@ S_0(n)=O(s_0\log s_0).
 Its materialized external coordinate has exactly
 
 \[
-C_0(n)=s_0+1+\lfloor n/s_0\rfloor+(n\bmod s_0)
+C_0(n)=s_0+1+2\lfloor n/s_0\rfloor
 \]
 
-scalar slots. This is \(\Theta(\sqrt n)\), not polylogarithmic.
+scalar slots. This is \(\Theta(\sqrt n)\), not polylogarithmic. The two
+block-sized terms are the evaluation-point and block-value arrays. Tail factors
+are streamed scalar operations and are not materialized coordinate slots.
 
 ## Jointly optimized Wilson consumer
 
@@ -135,6 +137,10 @@ inequalities for every candidate in its frozen range.  It also requires strict
 reductions in ring additions, ring multiplications, modular reductions,
 coefficient updates, allocation count, and peak live limbs.
 
+`allocation_count` is scoped to allocations of tracked outer-schedule objects;
+it is not a process-wide count of every allocator call. Transform and CRT
+scratch is charged by the conservative scratch-inclusive peak bound.
+
 ### Meaning of the peak counters
 
 `peak_live_coefficients` is the exact peak number of coefficient slots owned by
@@ -159,6 +165,11 @@ The polynomial engine has two exact backends:
 The second backend does not reduce modulo the possibly composite target until
 integer convolution coefficients have been reconstructed exactly. Monic
 remainder evaluation therefore remains valid without field inverses.
+
+The release suite directly compares transform/CRT multiplication and fast
+monic remainder with independent schoolbook references at composite and
+near-maximum 64-bit moduli. It also requires equality between serial and
+parallel per-prime transform execution.
 
 The ledger distinguishes high-level deterministic events from fixed-word
 arithmetic. It never promotes the native-operation count to a general bit

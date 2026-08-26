@@ -1,5 +1,6 @@
 #include "angel/boundary.hpp"
 #include "angel/diagnostics.hpp"
+#include "angel/observation_integrity.hpp"
 
 #include <algorithm>
 #include <cstdint>
@@ -55,6 +56,8 @@ void verify_native_pipeline() {
     const auto closed = ready | observe_primitive(4U, 998244353U, 1U, &ledger);
     const auto dense_updates = ledger.dense_reference_updates;
     const auto packet = closed | download(&ledger);
+    require(validate_download_packet(closed, packet).accepted(),
+            "canonical download packet validation failed");
     require(ledger.dense_reference_updates == dense_updates,
             "download performed deferred execution");
     const auto* primitive = std::get_if<PrimitiveObservation>(&packet.observation);
@@ -71,6 +74,21 @@ void verify_native_pipeline() {
     require(ledger.nodes_rewritten == 0U && ledger.nodes_merged == 0U &&
                 !ledger.ordinary_feedback,
             "the wrapper modified or fed back into state");
+
+    const auto canonical_before = ready.summary();
+    auto tampered = packet;
+    auto& tampered_primitive =
+        std::get<PrimitiveObservation>(tampered.observation);
+    tampered_primitive.primitive_column.front() ^= 1U;
+    require(!validate_download_packet(closed, tampered).accepted(),
+            "tampered derived observation map was accepted");
+    const auto canonical_after = ready.summary();
+    require(canonical_before.order == canonical_after.order &&
+                canonical_before.cycles == canonical_after.cycles &&
+                canonical_before.session == canonical_after.session &&
+                canonical_before.available_jet_order ==
+                    canonical_after.available_jet_order,
+            "derived observation tampering changed canonical state");
 }
 
 void verify_presentation_and_checkpoint() {
